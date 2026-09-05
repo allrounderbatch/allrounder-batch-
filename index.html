@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Competition Breaker | SSC, Railway, Defence & Competitive Exam Batches & Books</title>
+<meta name="description" content="All Competition Breaker offers affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams. Trusted study material at student-friendly prices.">
+<meta name="keywords" content="SSC batch, competitive exam books, SSC study material, railway exam batch, defence exam preparation, SSC PYQ books, online coaching batch, cheap exam batches, All Competition Breaker">
+<meta name="robots" content="index, follow">
+<meta name="acb-build" content="razorpay-telegram-save-nav-polish-v2">
+<meta name="google-site-verification" content="ZRe_F276WFM0UYGO6DpOhSPnH8a-t_jgIMPmWX03UbA" />
+<link rel="canonical" href="https://allcompitionbrakeer.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="All Competition Breaker | SSC, Railway, Defence & Competitive Exam Batches & Books">
+<meta property="og:description" content="Affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams.">
+<meta property="og:url" content="https://allcompitionbrakeer.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="All Competition Breaker | SSC, Railway, Defence & Competitive Exam Batches & Books">
+<meta name="twitter:description" content="Affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "All Competition Breaker",
+  "url": "https://allcompitionbrakeer.netlify.app/",
+  "description": "Affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams."
+}
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0D1F;
+    --bg-alt:#10122A;
+    --surface:#151833;
+    --surface-2:#1C1F42;
+    --line:#2C2F5A;
+    --text:#F1F2F9;
+    --muted:#8D90B3;
+    --saffron:#F0A93E;
+    --saffron-dim:#332507;
+    --teal:#2BC4B0;
+    --teal-dim:#0C2E29;
+    --danger:#F26B6B;
+    --success:#3ECF8E;
+    --radius:16px;
+    --font-display:'Sora',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(240,169,62,0.07), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(43,196,176,0.06), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer; border:none;}
+  button:focus-visible, a:focus-visible, input:focus-visible{outline:2px solid var(--saffron); outline-offset:2px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(18,20,43,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding:14px 18px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; cursor:pointer;}
+  .brand-mark{
+    width:42px; height:42px; border-radius:11px; flex-shrink:0;
+    background:linear-gradient(135deg, var(--saffron), #ffcf6b);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:800; color:#1a1400; font-size:13px; letter-spacing:0.3px;
+  }
+  .brand-name{font-family:var(--font-display); font-weight:700; font-size:17px; letter-spacing:0.2px;}
+  .brand-sub{font-size:10px; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase;}
+  .header-actions{display:flex; align-items:center; gap:10px;}
+  .icon-btn{
+    width:38px; height:38px; border-radius:10px; background:var(--surface);
+    display:flex; align-items:center; justify-content:center; color:var(--muted);
+    border:1px solid var(--line);
+  }
+  .icon-btn:hover{color:var(--text); border-color:var(--saffron);}
+
+  main{max-width:960px; margin:0 auto; padding:20px 16px 112px;}
+  .app-loading{min-height:62vh;display:flex;align-items:center;justify-content:center;padding:40px 18px;}
+  .loading-card{width:min(420px,100%);background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;}
+  .loading-spinner{width:28px;height:28px;margin:0 auto 12px;border:3px solid var(--line);border-top-color:var(--saffron);border-radius:50%;animation:acbSpin .8s linear infinite;}
+  .loading-title{font-family:var(--font-display);font-weight:700;font-size:15px;}
+  .loading-sub{color:var(--muted);font-size:12px;margin-top:5px;line-height:1.5;}
+  @keyframes acbSpin{to{transform:rotate(360deg)}}
+
+  /* ---------- Bottom nav ---------- */
+  .bottom-nav{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:rgba(7,9,22,.97); backdrop-filter:blur(16px);
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+  }
+  .nav-btn{
+    flex:1 1 0; min-width:0; max-width:none; height:56px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    color:#8f94aa; background:rgba(24,27,54,.92); border:1px solid rgba(255,255,255,.08);
+    font-size:9px; font-weight:700; padding:4px 2px; border-radius:13px;
+    white-space:nowrap; box-shadow:0 2px 8px rgba(0,0,0,.18), 0 1px 0 rgba(255,255,255,.04) inset;
+    transition:transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .nav-btn:active{transform:translateY(1px);}
+  .nav-btn.active{color:#fff; background:rgba(240,169,62,.14); border-color:rgba(240,169,62,.45); box-shadow:0 0 0 1px rgba(240,169,62,.10) inset, 0 3px 12px rgba(0,0,0,.22);}
+  .nav-btn svg{display:block; width:23px; height:23px; flex:0 0 auto;}
+  @media (max-width:390px){
+    .bottom-nav{gap:5px;padding-left:6px;padding-right:6px;}
+    .nav-btn{height:54px;border-radius:12px;font-size:8.5px;}
+    .nav-btn svg{width:22px;height:22px;}
+  }
+
+  /* ---------- Purchases page ---------- */
+  .purchase-row{
+    display:flex; align-items:center; gap:12px; background:var(--surface);
+    border:1px solid var(--line); border-radius:14px; padding:12px; margin-bottom:10px;
+  }
+  .purchase-thumb{
+    width:48px; height:48px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; font-size:11px; color:rgba(0,0,0,0.7);
+  }
+  .purchase-info{flex:1; min-width:0;}
+  .purchase-info .t{font-weight:700; font-size:13.5px; margin-bottom:2px;}
+  .purchase-info .s{font-size:11.5px; color:var(--muted);}
+  .empty-state{text-align:center; padding:60px 20px; color:var(--muted);}
+  .empty-state svg{margin-bottom:14px; opacity:0.5;}
+  .empty-state p{font-size:13.5px; line-height:1.6;}
+
+  /* ---------- Support page ---------- */
+  .support-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:20px; margin-bottom:14px;
+  }
+  .support-card h4{font-family:var(--font-display); font-size:14.5px; margin-bottom:6px;}
+  .support-card p{font-size:12.5px; color:var(--muted); line-height:1.6; margin-bottom:14px;}
+  .support-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; padding:12px; border-radius:11px; font-weight:700; font-size:13.5px;
+  }
+  .support-btn.msg{background:var(--saffron); color:#221900;}
+  .support-btn.msg:hover{filter:brightness(1.08);}
+  .support-btn.tg{background:#229ED9; color:#fff;}
+  .message-status{font-size:12px; color:var(--muted); text-align:center; margin-top:8px; line-height:1.5;}
+  .admin-message{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:10px;}
+  .admin-message strong{font-size:13px;}
+  .admin-message .meta{font-size:10.5px; color:var(--muted); margin:4px 0 8px;}
+  .admin-message .body{font-size:12.5px; color:var(--text); line-height:1.5; white-space:pre-wrap; overflow-wrap:anywhere;}
+  .admin-message .msg-del{margin-top:9px; color:var(--danger); font-size:12px; font-weight:600;}
+  .faq-item{border-bottom:1px solid var(--line); padding:14px 2px;}
+  .faq-item:last-child{border-bottom:none;}
+  .faq-item .q{font-weight:600; font-size:13px; margin-bottom:5px;}
+  .faq-item .a{font-size:12px; color:var(--muted); line-height:1.55;}
+
+  /* ---------- Home: two ticket tiles ---------- */
+  .hero{padding:18px 4px 26px;}
+  .hero-eyebrow{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:2px; color:var(--saffron);
+    text-transform:uppercase; margin-bottom:8px;
+  }
+  .hero h1{font-family:var(--font-display); font-size:28px; line-height:1.25; font-weight:800; margin-bottom:8px;}
+  .hero p{color:var(--muted); font-size:14.5px; max-width:46ch;}
+
+  /* ---------- Search bar ---------- */
+  .search-bar{
+    display:flex; align-items:center; gap:10px;
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:13px 16px; margin:4px 4px 22px; color:var(--muted); font-size:14px;
+  }
+
+  /* ---------- Two shortcut boxes (Batches / Books) ---------- */
+  .shortcut-row{display:flex; gap:14px; margin:0 4px 30px;}
+  .shortcut{
+    flex:1; background:#FFFFFF; border:1px solid var(--line); border-radius:18px;
+    padding:20px 10px 16px; display:flex; flex-direction:column; align-items:center; gap:10px;
+    transition:transform .15s ease, border-color .15s ease; text-align:center;
+  }
+  .shortcut:hover{transform:translateY(-2px);}
+  .shortcut-icon{
+    width:50px; height:50px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center; font-size:24px;
+  }
+  .shortcut.batches{border-color:rgba(240,169,62,0.35);}
+  .shortcut.batches .shortcut-icon{background:var(--saffron-dim); color:var(--saffron);}
+  .shortcut.books{border-color:rgba(43,196,176,0.35);}
+  .shortcut.books .shortcut-icon{background:var(--teal-dim); color:var(--teal);}
+  .shortcut-label{font-family:var(--font-display); font-weight:700; font-size:14.5px; color:#171933;}
+  .shortcut-sub{font-size:11px; color:#6b7094;}
+
+  /* ---------- Welcome banner ---------- */
+  .welcome{
+    text-align:center; padding:30px 22px 32px; margin:0 4px 30px;
+    background:linear-gradient(180deg, rgba(240,169,62,0.07), rgba(43,196,176,0.04));
+    border:1px solid var(--line); border-radius:20px;
+  }
+  .welcome-badge{
+    width:46px; height:46px; border-radius:50%; margin:0 auto 16px;
+    background:linear-gradient(135deg,var(--saffron),#ffd98a);
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+  }
+  .welcome h1{
+    font-family:var(--font-display); font-weight:800; font-size:19px; line-height:1.35;
+    margin-bottom:10px;
+  }
+  .welcome h1 span{color:var(--saffron);}
+  .welcome p{
+    font-size:13.5px; color:var(--muted); line-height:1.6; max-width:34ch; margin:0 auto;
+  }
+
+  /* ---------- How to buy guide ---------- */
+  .how-to-buy{
+    display:flex; align-items:center; gap:5px; margin-top:8px;
+    font-size:11.5px; color:var(--teal); font-weight:600; background:none; border:none; padding:0;
+  }
+  .how-to-buy:hover{text-decoration:underline;}
+
+  /* ---------- Home feed sections (horizontal scroll) ---------- */
+  .feed-section{margin-bottom:28px;}
+  .feed-head{display:flex; align-items:center; justify-content:space-between; padding:0 4px 12px;}
+  .feed-head h3{font-family:var(--font-display); font-size:15.5px; font-weight:700;}
+  .feed-head a{font-size:12.5px; font-weight:600; color:var(--saffron);}
+  .feed-head.books-head a{color:var(--teal);}
+  .h-scroll{display:flex; gap:12px; overflow-x:auto; padding:2px 4px 8px; scrollbar-width:none;}
+  .h-scroll::-webkit-scrollbar{display:none;}
+  .mini-card{
+    min-width:152px; max-width:152px; flex-shrink:0;
+    background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  }
+  .mini-body{padding:10px 10px 12px; display:flex; flex-direction:column; gap:6px;}
+  .mini-title{font-size:12.5px; font-weight:700; line-height:1.3; font-family:var(--font-display);}
+  .mini-price{font-family:var(--font-mono); font-size:17px; font-weight:700; color:var(--saffron);}
+
+  /* ---------- Section header on list pages ---------- */
+  .section-head{display:flex; align-items:center; gap:12px; margin-bottom:18px;}
+  .back-btn{
+    width:34px; height:34px; border-radius:9px; background:var(--surface);
+    border:1px solid var(--line); color:var(--muted); display:flex; align-items:center; justify-content:center;
+  }
+  .back-btn:hover{color:var(--text);}
+  .section-head h2{font-family:var(--font-display); font-size:20px; font-weight:700;}
+  .section-head span{display:block; font-size:12.5px; color:var(--muted); font-weight:400; margin-top:2px;}
+
+  /* ---------- Item cards ---------- */
+  .card-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:560px){ .card-grid{grid-template-columns:1fr;} }
+
+  .item-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .item-banner{
+    position:relative; height:auto; aspect-ratio:3/4; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--surface-2);
+    font-family:var(--font-display); font-weight:800; font-size:15px; text-align:center; padding:0;
+    color:rgba(0,0,0,0.75);
+  }
+  .poster-gallery{
+    width:100%; height:100%; display:flex; overflow-x:auto; overflow-y:hidden;
+    scroll-snap-type:x mandatory; scrollbar-width:none;
+    /* Horizontal swipes change poster; vertical swipes are handed to the page. */
+    touch-action:pan-x pan-y;
+    overscroll-behavior-x:contain;
+  }
+  .poster-gallery::-webkit-scrollbar{display:none;}
+  .poster-slide{
+    min-width:100%; width:100%; height:100%; flex:0 0 100%;
+    display:flex; align-items:center; justify-content:center;
+    scroll-snap-align:start; background:#fff;
+  }
+  .poster-slide img{
+    width:100%; height:100%; object-fit:contain; display:block;
+    touch-action:pan-x pan-y;
+  }
+  .poster-dots{
+    position:absolute; left:0; right:0; bottom:8px; display:flex;
+    justify-content:center; gap:5px; pointer-events:none;
+  }
+  .poster-dot{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.75); border:1px solid rgba(0,0,0,.25);}
+  .poster-dot.active{background:var(--saffron);}
+  .mini-banner{
+    position:relative; height:auto; aspect-ratio:3/4; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; padding:0;
+    background:var(--surface-2);
+  }
+  /* Batches use a wide 16:9 thumbnail poster instead of the tall 3:4 book
+     cover shape — books are left untouched. */
+  .item-banner.kind-batches, .mini-banner.kind-batches{ aspect-ratio:16/9; }
+  .mini-banner .poster-gallery{height:100%;}
+  .mini-banner .poster-slide img{object-fit:contain;}
+  .item-body{padding:14px 14px 16px; display:flex; flex-direction:column; gap:8px; flex:1;}
+  .item-tag{
+    align-self:flex-start; font-family:var(--font-mono); font-size:10px; letter-spacing:0.5px;
+    padding:3px 8px; border-radius:20px; background:var(--surface-2); color:var(--muted);
+  }
+  .item-title{font-family:var(--font-display); font-size:15px; font-weight:700; line-height:1.3;}
+  .item-sub{font-size:12.5px; color:var(--muted); line-height:1.45;}
+  .item-foot{margin-top:auto; display:flex; align-items:center; justify-content:space-between; padding-top:8px;}
+  .price-stub{display:flex; flex-direction:column; font-family:var(--font-mono);}
+  .price-now{font-size:22px; font-weight:700; color:var(--saffron); line-height:1.1;}
+  .price-was{font-size:12.5px; color:var(--muted); text-decoration:line-through;}
+  .buy-btn{
+    background:var(--saffron); color:#221900; font-weight:700; font-size:13px;
+    padding:9px 16px; border-radius:9px;
+  }
+  .buy-btn:hover{filter:brightness(1.08);}
+  .buy-btn.owned{background:var(--success); color:#052013;}
+
+  /* ---------- Modal ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(8,9,20,0.72); backdrop-filter:blur(3px);
+    display:none; align-items:flex-end; justify-content:center; z-index:100;
+  }
+  .overlay.open{display:flex;}
+  @media (min-width:640px){ .overlay{align-items:center;} }
+  .modal{
+    background:var(--bg-alt); border:1px solid var(--line); width:100%; max-width:440px;
+    border-radius:20px 20px 0 0; padding:22px 20px 26px; max-height:88vh; overflow-y:auto;
+  }
+  @media (min-width:640px){ .modal{border-radius:20px;} }
+  .modal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
+  .modal-head h3{font-family:var(--font-display); font-size:17px; font-weight:700;}
+  .close-x{width:30px; height:30px; border-radius:8px; background:var(--surface); color:var(--muted); display:flex; align-items:center; justify-content:center; font-size:16px;}
+
+  .field{margin-bottom:12px;}
+  .field label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px;}
+  .field input, .field textarea, .field select{
+    width:100%; background:var(--surface); border:1px solid var(--line); color:var(--text);
+    padding:10px 12px; border-radius:9px; font-size:14px; font-family:inherit;
+  }
+  .field input:focus, .field textarea:focus{border-color:var(--saffron);}
+
+  .pay-row{display:flex; justify-content:space-between; padding:9px 0; font-size:13.5px; border-bottom:1px dashed var(--line);}
+  .pay-row.total{font-weight:700; font-size:15px; border-bottom:none; padding-top:12px;}
+  .upi-options{display:flex; gap:8px; margin:14px 0;}
+  .upi-chip{flex:1; text-align:center; padding:10px 6px; border-radius:10px; background:var(--surface); border:1px solid var(--line); font-size:12px; color:var(--muted);}
+  .upi-chip.active{border-color:var(--saffron); color:var(--saffron); background:var(--saffron-dim);}
+  .pay-btn{
+    width:100%; background:var(--saffron); color:#221900; font-weight:700; font-size:14.5px;
+    padding:13px; border-radius:11px; margin-top:14px; display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .pay-btn:disabled{opacity:0.6;}
+  .note{font-size:11px; color:var(--muted); text-align:center; margin-top:10px; line-height:1.5;}
+
+  .success-icon{
+    width:64px; height:64px; border-radius:50%; background:var(--teal-dim); color:var(--teal);
+    display:flex; align-items:center; justify-content:center; font-size:30px; margin:6px auto 14px;
+  }
+  .success-title{font-family:var(--font-display); font-size:18px; font-weight:700; text-align:center; margin-bottom:6px;}
+  .success-sub{font-size:13px; color:var(--muted); text-align:center; margin-bottom:20px;}
+  .tg-btn{
+    width:100%; background:#229ED9; color:#fff; font-weight:700; font-size:14.5px;
+    padding:13px; border-radius:11px; display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .pdf-frame{width:100%; height:60vh; border-radius:10px; border:1px solid var(--line); margin-top:10px; background:#0b0c1a;}
+  .reader-gallery{width:100%; margin-top:10px; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;}
+  .reader-gallery .poster-gallery{height:65vh; min-height:360px;}
+  .reader-gallery .poster-slide img{object-fit:contain;}
+
+  /* ---------- Admin ---------- */
+  .admin-list{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+  .admin-row{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .admin-row-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+  .admin-row-head strong{font-size:13.5px;}
+  .admin-del{color:var(--danger); font-size:12px; font-weight:600;}
+  .tab-row{display:flex; gap:8px; margin-bottom:16px; overflow-x:auto; padding-bottom:3px; scrollbar-width:thin;}
+  .tab-btn{flex:0 0 auto; min-width:82px; padding:9px 11px; border-radius:9px; background:var(--surface); border:1px solid var(--line); color:var(--muted); font-size:13px; font-weight:600; white-space:nowrap;}
+  .tab-btn.active{background:var(--saffron-dim); color:var(--saffron); border-color:var(--saffron);}
+  .save-bar{position:sticky; bottom:0; background:var(--bg-alt); padding-top:10px; margin-top:6px;}
+  .add-btn{width:100%; padding:11px; border-radius:10px; background:var(--surface-2); color:var(--text); font-weight:600; font-size:13.5px; border:1px dashed var(--line); margin-top:4px;}
+
+  .account-btn{margin-left:auto;background:var(--surface);border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:10px;font-size:12px;font-weight:700;}
+  .account-btn.logged{color:var(--teal);border-color:rgba(45,212,191,.35);}
+  .auth-switch{display:flex;gap:8px;margin-bottom:14px;}
+  .auth-tab{flex:1;padding:9px;border-radius:9px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-weight:700;}
+  .auth-tab.active{background:var(--saffron-dim);color:var(--saffron);border-color:var(--saffron);}
+  .auth-help{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px;text-align:center;}
+  .hidden{display:none !important;}
+  .toast{
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+    background:var(--surface-2); border:1px solid var(--line); padding:10px 18px; border-radius:30px;
+    font-size:13px; z-index:200; opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .toast.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" onclick="handleLogoTap()">
+    <div class="brand-mark">ACB</div>
+    <div>
+      <div class="brand-name">All Competition Breaker</div>
+      <div class="brand-sub">Batches &amp; Books</div>
+    </div>
+  </div>
+  <button class="account-btn" id="accountBtn" onclick="openAuth()">Login / Sign up</button>
+</header>
+
+<main id="app"><div class="app-loading"><div class="loading-card"><div class="loading-spinner"></div><div class="loading-title">Loading All Competition Breaker</div><div class="loading-sub">Getting your batches and books ready…</div></div></div></main>
+
+<nav class="bottom-nav">
+  <button class="nav-btn" id="navHome" onclick="goHome()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    Home
+  </button>
+  <button class="nav-btn" id="navPurchases" onclick="goPurchases()">
+    <svg width="20" height="20" viewBox="-2 -2 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+    My Purchases
+  </button>
+  <button class="nav-btn" id="navSupport" onclick="goSupport()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    Support
+  </button>
+  <button class="nav-btn" id="navDmca" onclick="goDMCA()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line></svg>
+    DMCA
+  </button>
+  <button class="nav-btn" id="navGuide" onclick="openGuide()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.5 9a2.7 2.7 0 1 1 4.8 1.7c-.9 1-2.3 1.3-2.3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    How to buy
+  </button>
+</nav>
+
+<!-- Customer Login / Signup Modal -->
+<div class="overlay" id="authOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="authTitle">Login</h3>
+      <button class="close-x" onclick="closeModal('authOverlay')">✕</button>
+    </div>
+    <div class="auth-switch">
+      <button class="auth-tab active" id="loginTab" onclick="setAuthMode('login')">Login</button>
+      <button class="auth-tab" id="signupTab" onclick="setAuthMode('signup')">Sign up</button>
+    </div>
+    <div id="authBody"></div>
+  </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="overlay" id="checkoutOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Checkout</h3>
+      <button class="close-x" onclick="closeModal('checkoutOverlay')">✕</button>
+    </div>
+    <div id="checkoutBody"></div>
+  </div>
+</div>
+
+<!-- How to Buy Guide Modal -->
+<div class="overlay" id="guideOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>How to buy</h3>
+      <button class="close-x" onclick="closeModal('guideOverlay')">✕</button>
+    </div>
+    <div id="guideBody"></div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="overlay" id="successOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>&nbsp;</h3>
+      <button class="close-x" onclick="closeModal('successOverlay')">✕</button>
+    </div>
+    <div id="successBody"></div>
+  </div>
+</div>
+
+<!-- Support Message Modal -->
+<div class="overlay" id="supportMessageOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Message Support</h3>
+      <button class="close-x" onclick="closeModal('supportMessageOverlay')">✕</button>
+    </div>
+    <div class="field">
+      <label>Your name</label>
+      <input type="text" id="supportName" placeholder="Enter your name">
+    </div>
+    <div class="field">
+      <label>Your message</label>
+      <textarea id="supportMessage" rows="5" placeholder="Tell us what you need help with..."></textarea>
+    </div>
+    <button class="pay-btn" onclick="sendSupportMessage()">Send message</button>
+    <div class="message-status">Your message will appear in the support inbox.</div>
+  </div>
+</div>
+
+<!-- Admin Modal -->
+<div class="overlay" id="adminOverlay">
+  <div class="modal" style="max-width:520px;">
+    <div class="modal-head">
+      <h3>Admin panel</h3>
+      <button class="close-x" onclick="closeModal('adminOverlay')">✕</button>
+    </div>
+    <div id="adminBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ Safety net: surface any silent failure as a visible message
+   instead of buttons doing "nothing". This is the #1 fix for reports of
+   "login/signup button does nothing" — previously such errors only showed
+   up in the browser console, invisible to a normal visitor. ============ */
+window.addEventListener('error', function(e){
+  console.error('Uncaught error:', e.error||e.message);
+  try{ showToast('⚠️ Something went wrong: '+(e.message||'unknown error')); }catch(_){}
+});
+window.addEventListener('unhandledrejection', function(e){
+  console.error('Unhandled promise rejection:', e.reason);
+  try{ showToast('⚠️ '+(e.reason?.message||'Something went wrong')); }catch(_){}
+});
+
+/* ============ Sample seed data (used only if storage is empty) ============ */
+const SEED_BATCHES = [
+  {id:"b1", tag:"SSC · 2026", title:"SSC CGL Complete Batch", sub:"Full syllabus live classes, PDFs and weekly tests for SSC CGL Tier 1 & 2.", price:999, mrp:2499, telegram:"https://t.me/+your_invite_link", color:"linear-gradient(135deg,#F5A623,#ffd98a)"},
+  {id:"b2", tag:"Banking · 2026", title:"Bank PO Foundation Batch", sub:"Quant, reasoning and English for IBPS/SBI PO with daily practice sets.", price:799, mrp:1999, telegram:"https://t.me/+your_invite_link", color:"linear-gradient(135deg,#2DD4BF,#9ff5e8)"}
+];
+const SEED_BOOKS = [
+  {id:"k1", tag:"2026 Edition", title:"Maths Kingmaker PYQs", sub:"6,600+ previous year questions, chapter-wise with solutions.", price:149, mrp:399, telegram:"", pdfUrl:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", color:"linear-gradient(135deg,#F26B6B,#ffb3ac)"},
+  {id:"k2", tag:"Hindi Medium", title:"GK/GS Theory Compendium", sub:"Fully revised theory book covering all static GK topics.", price:99, mrp:249, telegram:"", pdfUrl:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", color:"linear-gradient(135deg,#8b7cf6,#c9befb)"}
+];
+const ADMIN_EMAIL = "ggr20161@gmail.com"; // Set this to the same email you will use for the Firebase Auth admin account.
+const UPI_ID = "allc.braker@ptyes";
+const UPI_PAYEE_NAME = "GAUTAM SINGHA";
+const API_BASE = "/api";
+
+let state = { batches: [], books: [], purchases: {}, allPurchases: {}, pendingRequests: [], messages: [], view: "home", adminUnlocked:false, site:{options:[{title:'',youtubeLink:''},{title:'',youtubeLink:''},{title:'',youtubeLink:''},{title:'',youtubeLink:''},{title:'',youtubeLink:''}]} };
+let currentUser = null;
+let authReady = false;
+let authMode = "login";
+
+/* ============ Firebase / Firestore (shared database — every visitor,
+   on every device, reads and writes the same data here) ============ */
+const firebaseConfig = {
+  apiKey: "AIzaSyAXqqPpEVhx6z_Fhuduy69NhUtbkAwXOpc",
+  authDomain: "all-competition-breaker.firebaseapp.com",
+  projectId: "all-competition-breaker",
+  storageBucket: "all-competition-breaker.firebasestorage.app",
+  messagingSenderId: "232747051338",
+  appId: "1:232747051338:web:ac6b66062c9369be68f9b3",
+  measurementId: "G-77WMWPJ9H0"
+};
+if(typeof firebase === 'undefined'){
+  document.body.innerHTML = '<div style="padding:24px;text-align:center;font-family:sans-serif;color:#F1F2F9;background:#0B0D1F;min-height:100vh;">'
+    + '<h2>Could not load required scripts</h2>'
+    + '<p>Firebase failed to load — this is usually caused by an ad blocker, browser extension, or the hosting provider injecting scripts that conflict with this page. Please try a different browser/network, or contact support.</p></div>';
+  throw new Error('Firebase SDK failed to load — aborting app init.');
+}
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const auth = firebase.auth();
+// Keep the session across refreshes and wait for Firebase's first auth
+// result before deciding whether to show Login or the user's account.
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(e=>console.warn('Auth persistence setup:', e));
+
+// fsGetDoc is allowed to throw (offline/network error) so callers can tell
+// "document doesn't exist" apart from "couldn't reach the server".
+async function fsGetDoc(collection, id){
+  const read=db.collection(collection).doc(id).get();
+  const timeout=new Promise((_,reject)=>setTimeout(()=>reject(new Error('Firestore read timeout')),8000));
+  const snap = await Promise.race([read,timeout]);
+  return snap.exists ? snap.data() : null;
+}
+async function fsSetDoc(collection, id, data){
+  try{
+    const write=db.collection(collection).doc(id).set(data);
+    const timeout=new Promise((_,reject)=>setTimeout(()=>reject(new Error('Firestore write timeout')),10000));
+    await Promise.race([write,timeout]);
+    return true;
+  }catch(e){
+    console.error(`Firestore write failed: ${collection}/${id}`,e);
+    return false;
+  }
+}
+async function fsDeleteDoc(collection, id){
+  try{ await db.collection(collection).doc(id).delete(); return true; }
+  catch(e){ return false; }
+}
+
+/* ============ IndexedDB (primary store) ============
+   localStorage caps out around 5MB per site. Poster images are stored as
+   base64 text, so a handful of books with photos was enough to hit that
+   wall — saves after that point failed silently. IndexedDB has a much
+   larger quota (typically hundreds of MB+) and is the right tool for
+   storing images, so it's now the primary store; localStorage is only
+   used for small session bits. */
+const IDB_NAME = 'ACB_DB';
+const IDB_STORE = 'kv';
+let idbOpenPromise = null;
+function idbOpen(){
+  if(idbOpenPromise) return idbOpenPromise;
+  idbOpenPromise = new Promise((resolve, reject)=>{
+    if(!('indexedDB' in window)){ reject(new Error('IndexedDB unavailable')); return; }
+    const req = indexedDB.open(IDB_NAME, 1);
+    req.onupgradeneeded = ()=>{ req.result.createObjectStore(IDB_STORE); };
+    req.onsuccess = ()=> resolve(req.result);
+    req.onerror = ()=> reject(req.error);
+  });
+  return idbOpenPromise;
+}
+async function idbGet(key){
+  try{
+    const db = await idbOpen();
+    return await new Promise((resolve, reject)=>{
+      const tx = db.transaction(IDB_STORE, 'readonly');
+      const rq = tx.objectStore(IDB_STORE).get(key);
+      rq.onsuccess = ()=> resolve(rq.result === undefined ? null : rq.result);
+      rq.onerror = ()=> reject(rq.error);
+    });
+  }catch(e){ return null; }
+}
+async function idbSet(key, value){
+  try{
+    const db = await idbOpen();
+    await new Promise((resolve, reject)=>{
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).put(value, key);
+      tx.oncomplete = ()=> resolve(true);
+      tx.onerror = ()=> reject(tx.error);
+    });
+    return true;
+  }catch(e){ return false; }
+}
+async function idbDelete(key){
+  try{
+    const db = await idbOpen();
+    await new Promise((resolve, reject)=>{
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).delete(key);
+      tx.oncomplete = ()=> resolve(true);
+      tx.onerror = ()=> reject(tx.error);
+    });
+    return true;
+  }catch(e){ return false; }
+}
+
+/* ============ Storage helpers (small session data only) ============ */
+function localRead(key, fallback){
+  try{
+    const raw = localStorage.getItem("ACB_" + key);
+    return raw === null ? fallback : JSON.parse(raw);
+  }catch(e){ return fallback; }
+}
+
+function localWrite(key, value){
+  try{
+    localStorage.setItem("ACB_" + key, JSON.stringify(value));
+    return true;
+  }catch(e){ return false; }
+}
+
+/* Each book/batch's poster images are stored under their own key
+   (poster:<kind>:<id>) separate from the small text list (title, price,
+   etc). This way editing one book's title, or uploading one poster,
+   only touches that book's data — not the whole catalog — so saving
+   stays fast even with 30-40+ books full of images. */
+function stripImages(items){
+  return items.map(({imgs, img, telegram, pdfUrl, ...rest}) => rest);
+}
+function privateAccessFields(items){
+  return items.map(({id,telegram,pdfUrl})=>({id,telegram:telegram||'',pdfUrl:pdfUrl||''}));
+}
+function attachImages(items, imageMap){
+  return items.map(it => {
+    const imgs = imageMap[it.id] || [];
+    return { ...it, imgs, img: imgs[0] || '' };
+  });
+}
+async function loadImagesFor(kind, items){
+  const map = {};
+  // Fetch every item's poster in parallel instead of one-at-a-time —
+  // a serial loop here was the main cause of the long blank-screen wait
+  // on load (each item added a full network round trip before anything
+  // rendered).
+  await Promise.all(items.map(async it=>{
+    try{
+      const doc = await fsGetDoc('posters', `${kind}_${it.id}`);
+      if(doc && doc.imgs && doc.imgs.length){
+        map[it.id] = doc.imgs;
+        await idbSet(`poster:${kind}:${it.id}`, doc.imgs);
+        return;
+      }
+    }catch(e){ /* offline — fall through to local cache below */ }
+    const cached = await idbGet(`poster:${kind}:${it.id}`);
+    if(cached && cached.length) map[it.id] = cached;
+  }));
+  return map;
+}
+
+async function loadCatalog(){
+  let batchesMeta = null, booksMeta = null, reachable = true;
+  try{
+    const [bDoc, kDoc] = await Promise.all([fsGetDoc('catalog','batches'), fsGetDoc('catalog','books')]);
+    batchesMeta = bDoc ? bDoc.items.map(({telegram,pdfUrl,...safe})=>safe) : null;
+    booksMeta = kDoc ? kDoc.items.map(({telegram,pdfUrl,...safe})=>safe) : null;
+  }catch(e){ reachable = false; }
+
+  if(!reachable){
+    // No internet right now — show whatever this device last saw, so the
+    // site still opens (read-only) instead of a blank page.
+    batchesMeta = await idbGet('catalog:batches:list') || [];
+    booksMeta = await idbGet('catalog:books:list') || [];
+    showToast('⚠️ Offline — showing last saved catalog');
+  } else if(batchesMeta === null || booksMeta === null){
+    // Genuinely first time this database has been used. One-time migration:
+    // pull in whatever this specific device already had saved locally
+    // (from before every device shared one database) so nothing already
+    // uploaded gets lost, then push it up to the shared database.
+    let legacyBatches = batchesMeta === null ? await idbGet('catalog:batches:list') : null;
+    let legacyBooks = booksMeta === null ? await idbGet('catalog:books:list') : null;
+    if(legacyBatches === null) legacyBatches = await idbGet('catalog:batches');
+    if(legacyBooks === null) legacyBooks = await idbGet('catalog:books');
+    if(legacyBatches === null) legacyBatches = localRead("catalog:batches", null);
+    if(legacyBooks === null) legacyBooks = localRead("catalog:books", null);
+    if(legacyBatches === null) legacyBatches = SEED_BATCHES;
+    if(legacyBooks === null) legacyBooks = SEED_BOOKS;
+
+    for(const it of legacyBatches){
+      const inline = Array.isArray(it.imgs) ? it.imgs.filter(Boolean) : (it.img ? [it.img] : []);
+      const local = await idbGet(`poster:batches:${it.id}`);
+      const imgs = (local && local.length) ? local : inline;
+      if(imgs.length) await fsSetDoc('posters', `batches_${it.id}`, {imgs});
+    }
+    for(const it of legacyBooks){
+      const inline = Array.isArray(it.imgs) ? it.imgs.filter(Boolean) : (it.img ? [it.img] : []);
+      const local = await idbGet(`poster:books:${it.id}`);
+      const imgs = (local && local.length) ? local : inline;
+      if(imgs.length) await fsSetDoc('posters', `books_${it.id}`, {imgs});
+    }
+
+    batchesMeta = stripImages(legacyBatches);
+    booksMeta = stripImages(legacyBooks);
+    await fsSetDoc('catalog','batches',{items:batchesMeta});
+    await fsSetDoc('catalog','books',{items:booksMeta});
+  }
+
+  await idbSet('catalog:batches:list', batchesMeta);
+  await idbSet('catalog:books:list', booksMeta);
+
+  // Paint text/catalog immediately. Posters are secondary and must never
+  // hold the entire page blank while every image is fetched.
+  state.batches = attachImages(batchesMeta, {});
+  state.books = attachImages(booksMeta, {});
+  if(typeof app!=='undefined' && app) render();
+
+  const [batchImages, bookImages] = await Promise.all([
+    loadImagesFor('batches', batchesMeta),
+    loadImagesFor('books', booksMeta)
+  ]);
+  state.batches = attachImages(batchesMeta, batchImages);
+  state.books = attachImages(booksMeta, bookImages);
+  if(typeof app!=='undefined' && app) render();
+}
+
+async function saveCatalog(){
+  const publicB=stripImages(state.batches), publicK=stripImages(state.books);
+  const okB = await fsSetDoc('catalog','batches',{items:publicB});
+  const okK = await fsSetDoc('catalog','books',{items:publicK});
+  if(!okB || !okK){
+    showToast('⚠️ Catalog save failed — check your internet connection and admin account');
+    return false;
+  }
+  const privateDocs=[...state.batches.map(it=>({kind:'batches',it})),...state.books.map(it=>({kind:'books',it}))];
+  let privateOk=true;
+  for(const {kind,it} of privateDocs){
+    const telegram=String(it.telegram||'').trim();
+    const pdfUrl=String(it.pdfUrl||'').trim();
+    const ok=await fsSetDoc('privateCatalog',`${kind}_${it.id}`,{kind,id:it.id,telegram,pdfUrl,updatedAt:Date.now()});
+    if(!ok) privateOk=false;
+  }
+  if(!privateOk){
+    showToast('⚠️ Telegram/PDF could not be saved — check Firebase admin permission');
+    return false;
+  }
+  await idbSet('catalog:batches:list', publicB);
+  await idbSet('catalog:books:list', publicK);
+  return true;
+}
+
+/* ============ Site settings (admin-customizable "How to buy" options) ============ */
+function emptySiteOptions(){ return [0,1,2,3,4].map(()=>({title:'',youtubeLink:''})); }
+function normalizeSiteDoc(doc){
+  // Supports the current {options:[...]} shape and migrates the old
+  // single {title, youtubeLink} shape (pre 5-option update) into option 1.
+  if(!doc) return {options: emptySiteOptions()};
+  if(Array.isArray(doc.options)){
+    const opts = emptySiteOptions();
+    for(let i=0;i<5;i++){ if(doc.options[i]) opts[i] = {title: doc.options[i].title||'', youtubeLink: doc.options[i].youtubeLink||''}; }
+    return {options: opts};
+  }
+  if(doc.title || doc.youtubeLink){
+    const opts = emptySiteOptions();
+    opts[0] = {title: doc.title||'', youtubeLink: doc.youtubeLink||''};
+    return {options: opts};
+  }
+  return {options: emptySiteOptions()};
+}
+async function loadSiteSettings(){
+  try{
+    const doc = await fsGetDoc('settings','site');
+    if(doc){ state.site = normalizeSiteDoc(doc); await idbSet('site:settings', state.site); return; }
+  }catch(e){ console.warn('Could not load How-to-buy settings from Firebase:', e); /* fall through to cache */ }
+  const cached = await idbGet('site:settings');
+  if(cached) state.site = normalizeSiteDoc(cached);
+}
+async function saveSiteSettings(options){
+  const data = {options: options.map(o=>({title:o.title||'', youtubeLink:o.youtubeLink||''}))};
+  try{
+    await db.collection('settings').doc('site').set(data);
+    state.site = normalizeSiteDoc(data);
+    await idbSet('site:settings', state.site);
+    return true;
+  }catch(e){
+    console.error('How-to-buy settings save failed:', e);
+    const msg = e && e.code === 'permission-denied'
+      ? '⚠️ Admin permission denied. Sign in with the configured admin email.'
+      : '⚠️ Save failed — check Firebase connection and try again.';
+    showToast(msg);
+    return false;
+  }
+}
+// Accepts a full YouTube URL (watch, youtu.be, shorts, or embed) and returns
+// an embeddable player URL, or '' if the link isn't a recognizable YouTube link.
+function youtubeEmbedUrl(link){
+  if(!link) return '';
+  try{
+    const u = new URL(String(link).trim());
+    const host = u.hostname.toLowerCase().replace(/^www\./,'');
+    let id = '';
+    if(host === 'youtu.be') id = u.pathname.replace(/^\//,'').split('/')[0];
+    else if(host === 'youtube.com' || host === 'm.youtube.com'){
+      if(u.pathname === '/watch') id = u.searchParams.get('v') || '';
+      else if(u.pathname.startsWith('/embed/')) id = u.pathname.split('/')[2] || '';
+      else if(u.pathname.startsWith('/shorts/')) id = u.pathname.split('/')[2] || '';
+    }
+    return /^[A-Za-z0-9_-]{6,}$/.test(id) ? `https://www.youtube.com/embed/${id}` : '';
+  }catch(e){ return ''; }
+}
+async function savePoster(kind, id, imgs){
+  const ok = await fsSetDoc('posters', `${kind}_${id}`, {imgs});
+  if(!ok) showToast('⚠️ Could not save poster — check your internet connection');
+  await idbSet(`poster:${kind}:${id}`, imgs);
+}
+async function deletePoster(kind, id){
+  await fsDeleteDoc('posters', `${kind}_${id}`);
+  await idbDelete(`poster:${kind}:${id}`);
+}
+
+/* ============ Secure customer data ============ */
+async function persistPurchases(email, items){
+  try{
+    await db.collection('purchases').doc(email).set({items, updatedAt:Date.now()}, {merge:true});
+    await idbSet('my:purchases:v2', state.purchases);
+    return true;
+  }catch(e){
+    console.error(e);
+    showToast('⚠️ Could not sync purchase data');
+    return false;
+  }
+}
+async function loadMyPurchases(email){
+  try{
+    const doc = await fsGetDoc('purchases', email);
+    state.purchases[email] = doc ? (doc.items||{}) : {};
+    await idbSet('my:purchases:v2', state.purchases);
+  }catch(e){
+    const cached = await idbGet('my:purchases:v2');
+    state.purchases[email] = (cached && cached[email]) ? cached[email] : {};
+  }
+  if(typeof app!=='undefined' && app) render();
+}
+
+async function addSupportMessageDoc(msg){
+  if(!currentUser) return false;
+  try{
+    await db.collection('messages').doc(msg.id).set({...msg, uid:currentUser.uid, email:currentUser.email});
+    return true;
+  }catch(e){ console.error(e); return false; }
+}
+async function loadAllMessages(){
+  const snap = await db.collection('messages').orderBy('at','desc').get();
+  const arr=[]; snap.forEach(d=>arr.push(d.data())); return arr;
+}
+
+/* ============ Firebase Authentication ============ */
+function normalizeEmail(v){ return String(v||'').trim().toLowerCase(); }
+async function saveProfile(user, data){
+  await db.collection('users').doc(user.uid).set({
+    uid:user.uid, email:user.email, name:data.name||'', mobile:data.mobile||'', updatedAt:Date.now(), createdAt:data.createdAt||Date.now()
+  }, {merge:true});
+}
+async function getProfile(user){
+  try{
+    const d=await db.collection('users').doc(user.uid).get();
+    return d.exists ? d.data() : {};
+  }catch(e){ return {}; }
+}
+function refreshAccountButton(){
+  const b=document.getElementById('accountBtn'); if(!b) return;
+  if(currentUser){
+    b.textContent='👤 '+(currentUser.name||currentUser.email.split('@')[0]);
+    b.classList.add('logged'); b.disabled=false; b.setAttribute('aria-label','Open account');
+  } else if(!authReady){
+    b.textContent='Checking session…'; b.classList.remove('logged'); b.disabled=true;
+  } else {
+    b.textContent='Login / Sign up'; b.classList.remove('logged'); b.disabled=false; b.setAttribute('aria-label','Login or sign up');
+  }
+}
+function setAuthMode(mode){authMode=mode; renderAuthBody();}
+function openAuth(){
+  if(!authReady) return showToast('Please wait — checking your login session');
+  if(currentUser){
+    document.getElementById('authTitle').textContent='My Account';
+    document.getElementById('loginTab').classList.remove('active'); document.getElementById('signupTab').classList.remove('active');
+    document.getElementById('authBody').innerHTML=`<div class="success-icon">✓</div><div class="success-title">${escapeHtml(currentUser.name||'Account')}</div><div class="success-sub">${escapeHtml(currentUser.email)}</div><button class="pay-btn" onclick="logoutUser()">Logout</button>`;
+  } else {authMode='login'; renderAuthBody();}
+  document.getElementById('authOverlay').classList.add('open');
+}
+function renderAuthBody(){
+  document.getElementById('authTitle').textContent=authMode==='login'?'Login':'Create account';
+  document.getElementById('loginTab').classList.toggle('active',authMode==='login');
+  document.getElementById('signupTab').classList.toggle('active',authMode==='signup');
+  document.getElementById('authBody').innerHTML = authMode==='login' ? `
+    <div class="field"><label>Email</label><input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+    <div class="field"><label>Password</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Enter password"></div>
+    <button class="pay-btn" onclick="loginUser()">Login</button>
+    <button class="link-btn" style="margin-top:10px;background:none;border:0;color:var(--teal);cursor:pointer" onclick="resetPassword()">Forgot password?</button>
+    <div class="auth-help">Your login is securely handled by Firebase Authentication.</div>` : `
+    <div class="field"><label>Name</label><input id="authName" type="text" autocomplete="name" placeholder="Your name"></div>
+    <div class="field"><label>Email</label><input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+    <div class="field"><label>Mobile (optional)</label><input id="authMobile" type="tel" autocomplete="tel" placeholder="10-digit mobile"></div>
+    <div class="field"><label>Password</label><input id="authPassword" type="password" autocomplete="new-password" placeholder="Create a password (6+ characters)"></div>
+    <button class="pay-btn" onclick="signupUser()">Create account</button>
+    <div class="auth-help">No purchase is granted just by signing up.</div>`;
+}
+async function signupUser(){
+  const name=(document.getElementById('authName')?.value||'').trim();
+  const email=normalizeEmail(document.getElementById('authEmail')?.value);
+  const mobile=(document.getElementById('authMobile')?.value||'').trim();
+  const password=document.getElementById('authPassword')?.value||'';
+  if(!name) return showToast('Enter your name');
+  if(!email || !email.includes('@')) return showToast('Enter a valid email');
+  if(password.length<6) return showToast('Password must be at least 6 characters');
+  try{
+    const cred=await auth.createUserWithEmailAndPassword(email,password);
+    await saveProfile(cred.user,{name,mobile,createdAt:Date.now()});
+    currentUser={uid:cred.user.uid,email:cred.user.email,name,mobile};
+    refreshAccountButton(); render();
+    closeModal('authOverlay');
+    showToast('Account created successfully');
+  }catch(e){
+    console.error(e);
+    const msg=e.code==='auth/email-already-in-use'?'Account already exists. Please login.':(e.code==='auth/operation-not-allowed'?'Email/password login is not enabled in Firebase yet. (Firebase Console → Authentication → Sign-in method → enable Email/Password)':(e.code==='auth/unauthorized-domain'?'This website domain is not authorized in Firebase Console → Authentication → Settings → Authorized domains.':(e.code==='auth/weak-password'?'Password is too weak — use at least 6 characters.':e.message||'Could not create account')));
+    showToast('⚠️ '+msg);
+  }
+}
+async function loginUser(){
+  const email=normalizeEmail(document.getElementById('authEmail')?.value);
+  const password=document.getElementById('authPassword')?.value||'';
+  if(!email || !password) return showToast('Enter email and password');
+  try{
+    const cred=await auth.signInWithEmailAndPassword(email,password);
+    const profile=await getProfile(cred.user);
+    currentUser={uid:cred.user.uid,email:cred.user.email,name:profile.name||cred.user.displayName||cred.user.email.split('@')[0],mobile:profile.mobile||''};
+    refreshAccountButton(); render();
+    closeModal('authOverlay'); showToast('Login successful');
+  }catch(e){
+    console.error(e);
+    const msg=(e.code==='auth/user-not-found'||e.code==='auth/invalid-credential'||e.code==='auth/wrong-password')?'Wrong email or password':(e.code==='auth/unauthorized-domain'?'This website domain is not authorized in Firebase Console → Authentication → Settings → Authorized domains.':(e.code==='auth/operation-not-allowed'?'Email/password login is not enabled in Firebase yet.':e.message||'Login failed'));
+    showToast('⚠️ '+msg);
+  }
+}
+async function resetPassword(){
+  const email=normalizeEmail(document.getElementById('authEmail')?.value);
+  if(!email || !email.includes('@')) return showToast('Enter your email first');
+  try{ await firebase.auth().sendPasswordResetEmail(email); showToast('Password reset email sent'); }
+  catch(e){ showToast('⚠️ Could not send reset email'); }
+}
+async function logoutUser(){ await auth.signOut(); currentUser=null; refreshAccountButton(); closeModal('authOverlay'); render(); showToast('Logged out'); }
+function userPurchases(){ return currentUser ? (state.purchases[currentUser.email]||{}) : {}; }
+function hasPurchase(id,kind){ const p=userPurchases()[id]; return !!(p && p.status==='paid' && (!kind || p.kind===kind)); }
+
+/* ============ Rendering ============ */
+const app = document.getElementById('app');
+
+function goHome(){ state.view="home"; render(); }
+function goBatches(){ state.view="batches"; render(); }
+function goBooks(){ state.view="books"; render(); }
+function goPurchases(){ state.view="purchases"; render(); }
+function goSupport(){ state.view="support"; render(); }
+function goDMCA(){ state.view="dmca"; render(); }
+
+let logoTapCount = 0;
+let logoTapTimer = null;
+function handleLogoTap(){
+  logoTapCount++;
+  clearTimeout(logoTapTimer);
+
+  // Hidden admin opens after 10 taps. Slow and fast tapping both work.
+  if(logoTapCount >= 10){
+    logoTapCount = 0;
+    openAdmin();
+    return;
+  }
+
+  goHome();
+  logoTapTimer = setTimeout(()=>{ logoTapCount = 0; }, 30000);
+}
+
+function updateNavHighlight(){
+  document.getElementById('navHome').classList.toggle('active', ['home','batches','books'].includes(state.view));
+  document.getElementById('navPurchases').classList.toggle('active', state.view==='purchases');
+  document.getElementById('navSupport').classList.toggle('active', state.view==='support');
+  document.getElementById('navDmca').classList.toggle('active', state.view==='dmca');
+}
+
+function render(){
+  updateNavHighlight();
+  if(state.view==="home") return renderHome();
+  if(state.view==="batches") return renderList("batches");
+  if(state.view==="books") return renderList("books");
+  if(state.view==="purchases") return renderPurchases();
+  if(state.view==="support") return renderSupport();
+  if(state.view==="dmca") return renderDMCA();
+}
+
+function renderPurchases(){
+  if(!currentUser){
+    app.innerHTML=`<div class="section-head"><h2>My Purchases<span>Login required</span></h2></div><div class="empty-state"><p>Please login or sign up to see your purchases.</p><button class="pay-btn" onclick="openAuth()">Login / Sign up</button></div>`;
+    return;
+  }
+  const owned = Object.keys(userPurchases());
+  const items = owned.map(id => {
+    const b = state.batches.find(x=>x.id===id); if(b) return {...b, kind:'batches'};
+    const k = state.books.find(x=>x.id===id); if(k) return {...k, kind:'books'};
+    return null;
+  }).filter(Boolean);
+  if(items.length===0){
+    app.innerHTML=`<div class="section-head"><h2>My Purchases<span>Nothing purchased yet</span></h2></div><div class="empty-state"><p>Once you complete a verified payment, your book or batch will appear here.</p></div>`;
+    return;
+  }
+  app.innerHTML=`<div class="section-head"><h2>My Purchases<span>${items.length} item${items.length>1?'s':''}</span></h2></div>${items.map(it=>`<div class="purchase-row" onclick="openOwned('${it.kind}','${it.id}')"><div class="purchase-thumb" style="background:${it.color}">${it.kind==='batches'?'BATCH':'BOOK'}</div><div class="purchase-info"><div class="t">${escapeHtml(it.title)}</div><div class="s">${it.kind==='batches'?'Tap to open Telegram access':'Tap to open your Telegram download link'}</div></div></div>`).join('')}`;
+}
+function renderSupport(){
+  app.innerHTML = `
+    <div class="section-head"><h2>Support<span>We're here to help</span></h2></div>
+
+    <div class="support-card">
+      <h4>Need help with a purchase?</h4>
+      <p>Payment issue, wrong batch, or link not working? Send a message directly from this website.</p>
+      <button class="support-btn msg" onclick="openSupportMessage()">Open message box</button>
+    </div>
+
+    <div class="support-card">
+      <h4>Join our announcement channel</h4>
+      <p>Updates on new batches, offers and important notices.</p>
+      <a class="support-btn tg" href="https://t.me/your_announcement_channel" target="_blank" rel="noopener">Open Telegram</a>
+    </div>
+
+    <div class="support-card">
+      <h4>Frequently asked questions</h4>
+      <div class="faq-item">
+        <div class="q">I paid but didn't get access. What now?</div>
+        <div class="a">Message us on WhatsApp with your payment screenshot — we'll fix it within a few hours.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Can I get a refund?</div>
+        <div class="a">Digital products are generally non-refundable once accessed. Contact support for specific issues.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">How long do I have access to a batch?</div>
+        <div class="a">Lifetime access unless stated otherwise on the batch page.</div>
+      </div>
+    </div>
+  `;
+}
+function renderDMCA(){
+  app.innerHTML = `
+    <div class="section-head"><h2>📄 DMCA &amp; Copyright policy<span>Please read carefully</span></h2></div>
+
+    <div class="support-card">
+      <h4>🛑 Our Commitment</h4>
+      <p>We respect and protect the intellectual property rights of creators, authors, publishers, and copyright owners. If you believe that any content published on our website infringes upon your copyright, please notify us with the relevant details and supporting proof of ownership. We are committed to reviewing all valid copyright complaints in good faith and, where appropriate, promptly removing or disabling access to the infringing content from our website and taking reasonable steps to prevent its continued availability.</p>
+    </div>
+
+    <div class="support-card">
+      <h4>Copyright takedown request</h4>
+      <p>Email: <strong>allcompitionbraker@gmail.com</strong><br>Please include your proof of ownership and the exact content/link you are reporting.</p>
+      <a class="support-btn msg" href="mailto:allcompitionbraker@gmail.com?subject=DMCA%20%2F%20Copyright%20Takedown%20Request">Email us</a>
+    </div>
+  `;
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="search-bar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> <span>Search batches, books...</span></div>
+
+    <div class="shortcut-row">
+      <button class="shortcut batches" onclick="goBatches()">
+        <div class="shortcut-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div>
+        <div class="shortcut-label">Batch's</div>
+        <div class="shortcut-sub">${state.batches.length} available</div>
+      </button>
+      <button class="shortcut books" onclick="goBooks()">
+        <div class="shortcut-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v14"></path><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H18"></path><path d="M8 7h6"></path><path d="M8 10.5h6"></path></svg></div>
+        <div class="shortcut-label">Book's</div>
+        <div class="shortcut-sub">${state.books.length} available</div>
+      </button>
+    </div>
+
+    <div class="welcome">
+      <div class="welcome-badge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"></path><path d="M7 5H4a2 2 0 0 0 0 4h1.5"></path><path d="M17 5h3a2 2 0 0 1 0 4h-1.5"></path></svg></div>
+      <h1>Welcome to<br><span>All Competition Breaker</span></h1>
+      <p>Every rank holder started as a beginner. Show up daily, trust the process, and let your hard work speak on result day.</p>
+    </div>
+
+    <div class="feed-section">
+      <div class="feed-head">
+        <h3>Popular batches</h3>
+        <a href="javascript:void(0)" onclick="goBatches()">See all →</a>
+      </div>
+      <div class="h-scroll">
+        ${state.batches.map(it=>miniCard(it,'batches')).join('')}
+      </div>
+    </div>
+
+    <div class="feed-section">
+      <div class="feed-head books-head">
+        <h3>New books</h3>
+        <a href="javascript:void(0)" onclick="goBooks()">See all →</a>
+      </div>
+      <div class="h-scroll">
+        ${state.books.map(it=>miniCard(it,'books')).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function miniCard(it, kind){
+  const owned = hasPurchase(it.id);
+  return `
+    <div class="mini-card" onclick="${owned ? `openOwned('${kind}','${it.id}')` : `openCheckout('${kind}','${it.id}')`}">
+      ${posterGallery(it, true, kind)}
+      <div class="mini-body">
+        <div class="mini-title">${escapeHtml(it.title)}</div>
+        <div class="mini-price">${owned ? 'Open' : '₹'+it.price}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderList(kind){
+  const items = state[kind];
+  const title = kind==="batches" ? "Batches" : "Books";
+  const sub = kind==="batches" ? "Live course bundles" : "Study material & notes";
+  app.innerHTML = `
+    <div class="section-head">
+      <button class="back-btn" onclick="goHome()">←</button>
+      <h2>${title}<span>${sub}</span></h2>
+    </div>
+    <div class="card-grid">
+      ${items.map(it=>renderCard(it,kind)).join('')}
+    </div>
+  `;
+}
+
+function renderCard(it, kind){
+  const owned = hasPurchase(it.id);
+  return `
+    <div class="item-card">
+      ${posterGallery(it, false, kind)}
+      <div class="item-body">
+        <span class="item-tag">${escapeHtml(it.tag)}</span>
+        <div class="item-title">${escapeHtml(it.title)}</div>
+        <div class="item-sub">${escapeHtml(it.sub)}</div>
+        <div class="item-foot">
+          <div class="price-stub">
+            <span class="price-now">₹${it.price}</span>
+            ${it.mrp ? `<span class="price-was">₹${it.mrp}</span>` : ``}
+          </div>
+          ${owned
+            ? `<button class="buy-btn owned" onclick="openOwned('${kind}','${it.id}')">Open ✔</button>`
+            : `<button class="buy-btn" onclick="openCheckout('${kind}','${it.id}')">Buy now</button>`
+          }
+        </div>
+        <button class="how-to-buy" onclick="event.stopPropagation(); openGuide()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> How to buy?</button>
+      </div>
+    </div>
+  `;
+}
+
+function getPosterImages(it){
+  const imgs = Array.isArray(it.imgs) ? it.imgs.filter(Boolean) : [];
+  if(!imgs.length && it.img) imgs.push(it.img);
+  return imgs;
+}
+
+function posterGallery(it, mini=false, kind=''){
+  const imgs = getPosterImages(it);
+  const baseCls = mini ? 'mini-banner' : 'item-banner';
+  const cls = kind ? `${baseCls} kind-${kind}` : baseCls;
+  if(!imgs.length){
+    return `<div class="${cls}" style="background:${it.color}">${escapeHtml(it.title)}</div>`;
+  }
+
+  return `
+    <div class="${cls}" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()">
+      <div class="poster-gallery" onscroll="updatePosterDots(this)">
+        ${imgs.map((src,i)=>`
+          <div class="poster-slide">
+            <img src="${src}" alt="${escapeHtml(it.title)} poster ${i+1}">
+          </div>
+        `).join('')}
+      </div>
+      ${imgs.length>1 ? `<div class="poster-dots">${imgs.map((_,i)=>`<span class="poster-dot ${i===0?'active':''}"></span>`).join('')}</div>` : ''}
+    </div>
+  `;
+}
+
+function escapeHtml(s){ const d=document.createElement('div'); d.innerText=s; return d.innerHTML; }
+// The dots under a poster gallery only reflected slide 1 even after swiping
+// to a later image. Recompute which slide is centered from scroll position
+// and keep the matching dot highlighted.
+function updatePosterDots(galleryEl){
+  const dotsWrap = galleryEl.nextElementSibling;
+  if(!dotsWrap || !dotsWrap.classList.contains('poster-dots')) return;
+  const idx = Math.round(galleryEl.scrollLeft / galleryEl.clientWidth);
+  dotsWrap.querySelectorAll('.poster-dot').forEach((dot,i)=> dot.classList.toggle('active', i===idx));
+}
+
+/* ============ Checkout flow (automatic Razorpay payment) ============ */
+function findItem(kind,id){ return state[kind].find(x=>x.id===id); }
+function openCheckout(kind,id){
+  if(!currentUser){ openAuth(); showToast('Please login or sign up before buying'); return; }
+  const it=findItem(kind,id); if(!it) return showToast('Item not found');
+  if(hasPurchase(id)){ openOwned(kind,id); return; }
+  const body=document.getElementById('checkoutBody');
+  body.innerHTML=`
+    <div class="pay-row"><span>${escapeHtml(it.title)}</span><span>₹${it.price}</span></div>
+    <div class="pay-row total"><span>Total payable</span><span>₹${it.price}</span></div>
+    <div style="text-align:center;margin:16px 0 8px;">
+      <div class="success-icon" style="margin:0 auto 10px;">₹</div>
+      <div style="font-weight:700;font-size:15px;">Secure Razorpay payment</div>
+      <div class="note">Pay securely using UPI, cards, net banking and other Razorpay-supported methods.</div>
+    </div>
+    <button class="pay-btn" id="payBtn" onclick="startPayment('${kind}','${id}')">Pay ₹${it.price} securely</button>
+    <div class="note">Your access is unlocked automatically after Razorpay confirms the successful payment. No UTR or manual approval is required.</div>`;
+  document.getElementById('checkoutOverlay').classList.add('open');
+}
+async function startPayment(kind,id){
+  if(!currentUser) return openAuth();
+  const item=findItem(kind,id); if(!item) return showToast('Item not found');
+  const btn=document.getElementById('payBtn'); if(btn){btn.disabled=true;btn.textContent='Opening secure payment…';}
+  try{
+    const token=await firebase.auth().currentUser.getIdToken(true);
+    const res=await fetch(`${API_BASE}/create-order`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({kind,id})});
+    let order; try{ order=await res.json(); }catch(_){ throw new Error('Payment server did not respond correctly — is this site deployed on Netlify with functions enabled?'); }
+    if(!res.ok){ const msg=order.error||'Could not create payment order'; if(/Razorpay Key ID\/Key Secret are not configured/i.test(msg)) throw new Error('Razorpay keys are not loaded in this Netlify deployment. After saving the Netlify variables, trigger a new Deploy/Publish and try again.'); throw new Error(msg); }
+    if(!order.orderId||!order.keyId) throw new Error('Razorpay order was not created — check Razorpay Key ID/Key Secret in Netlify environment variables.');
+    if(!window.Razorpay) throw new Error('Razorpay Checkout could not load — check your internet connection or browser blocker.');
+    const options={
+      key:order.keyId,
+      amount:order.amount,
+      currency:order.currency||'INR',
+      name:'All Competition Breaker',
+      description:order.description||order.name||'ACB purchase',
+      order_id:order.orderId,
+      prefill:{name:currentUser.name||'',email:currentUser.email||'',contact:currentUser.mobile||''},
+      notes:{kind,id},
+      theme:{color:'#F0A93E'},
+      handler:async function(response){ await handleRazorpaySuccess(response,kind,id); },
+      modal:{ondismiss:function(){ if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;} }}
+    };
+    const rzp=new Razorpay(options);
+    rzp.on('payment.failed',function(response){
+      console.error('Razorpay payment failed',response);
+      showToast('⚠️ Payment failed. Please try again.');
+      if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;}
+    });
+    rzp.open();
+  }catch(e){console.error(e);showToast('⚠️ '+(e.message||'Could not start payment'));if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;}}
+}
+async function handleRazorpaySuccess(response,kind,id){
+  try{
+    showToast('Verifying Razorpay payment…');
+    const token=await firebase.auth().currentUser.getIdToken(true);
+    const res=await fetch(`${API_BASE}/verify-payment`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({
+      orderId:response.razorpay_order_id,
+      paymentId:response.razorpay_payment_id,
+      signature:response.razorpay_signature
+    })});
+    const data=await res.json();
+    if(!res.ok) throw new Error(data.error||'Payment verification failed');
+    await loadMyPurchases(currentUser.email);
+    document.getElementById('checkoutOverlay').classList.remove('open');
+    showSuccess(kind,id,true,false);
+  }catch(e){
+    console.error(e);
+    showToast('⚠️ Payment received but verification is pending. Please open My Purchases shortly.');
+    await loadMyPurchases(currentUser.email);
+  }
+}
+function openOwned(kind,id){
+  if(!currentUser) return openAuth();
+  const p=userPurchases()[id]; if(!p || p.status!=='paid' || p.kind!==kind){showToast('This item is not purchased on this account.');return;}
+  if(kind==='books'&&p.accessUsed){showToast('This Telegram link was already opened. Please contact support if needed.');return;}
+  showSuccess(kind,id,false,false);
+}
+
+async function showSuccess(kind,id,afterPayment=false,pendingReview=false){
+  const it=findItem(kind,id), body=document.getElementById('successBody'); if(!it) return;
+  if(!currentUser || !hasPurchase(id,kind)) return showToast('Verified purchase required.');
+  body.innerHTML=`<div class="success-icon">✓</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is ready.</div><div class="note">Checking your secure access link…</div>`;
+  document.getElementById('successOverlay').classList.add('open');
+  try{
+    const token=await firebase.auth().currentUser.getIdToken(true);
+    let data=null, lastError=null;
+    for(let attempt=0;attempt<3;attempt++){
+      try{
+        const res=await fetch(`${API_BASE}/access-link?kind=${encodeURIComponent(kind)}&id=${encodeURIComponent(id)}`,{headers:{'Authorization':'Bearer '+token},cache:'no-store'});
+        if(res.ok){ data=await res.json(); break; }
+        lastError=new Error(`Access link unavailable (${res.status})`);
+      }catch(e){ lastError=e; }
+      await new Promise(r=>setTimeout(r,700));
+    }
+    if(!data) throw (lastError||new Error('Access link unavailable'));
+    const link=data.telegram||'';
+    body.innerHTML=`<div class="success-icon">✓</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is ready.</div>${link?`<a class="tg-btn" href="${escapeHtml(link)}" target="_blank" rel="noopener" onclick="markAccessUsed('${id}')">Click here to download / open your PDF book in Telegram</a>`:`<div class="note"><strong>Telegram link is not added for this item yet.</strong><br>Please contact support.</div>`}<div class="note"><strong>Note:</strong> This access link is provided only after verified payment. Please open it without refreshing or closing the page.</div>`;
+  }catch(e){
+    console.error(e);
+    body.innerHTML=`<div class="success-icon">✓</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is paid and recorded.</div><div class="note">Your secure access link is being prepared. Please close this popup and open My Purchases in a moment.</div>`;
+  }
+}
+async function markAccessUsed(id){
+  if(currentUser && state.purchases[currentUser.email]?.[id]){
+    state.purchases[currentUser.email][id].accessUsed = true;
+    await idbSet('my:purchases:v2', state.purchases);
+  }
+}
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function openGuide(){
+  renderGuideList();
+  document.getElementById('guideOverlay').classList.add('open');
+}
+function guideOptions(){
+  return (state.site.options||[]).filter(o=>o && (o.title||o.youtubeLink));
+}
+function renderGuideList(){
+  const body=document.getElementById('guideBody');
+  const opts=guideOptions();
+  if(!opts.length){
+    body.innerHTML=`<div class="note">This section hasn't been added yet. Please check back soon.</div>`;
+    return;
+  }
+  body.innerHTML=`<div class="admin-list">${opts.map((o,i)=>`<button class="tab-btn" style="width:100%; text-align:left;" onclick="renderGuideDetail(${i})">${escapeHtml(o.title||('Option '+(i+1)))}</button>`).join('')}</div>`;
+}
+function renderGuideDetail(i){
+  const body=document.getElementById('guideBody');
+  const o=guideOptions()[i]||{};
+  const title=o.title||'';
+  const link=o.youtubeLink||'';
+  const embed = youtubeEmbedUrl(link);
+  body.innerHTML=`
+    <button class="tab-btn" onclick="renderGuideList()" style="margin-bottom:14px;">← Back</button>
+    ${title ? `<div class="admin-row" style="margin-bottom:14px;"><strong style="font-size:14px;">${escapeHtml(title)}</strong></div>` : ''}
+    ${link ? `<div class="note" style="margin-bottom:10px;overflow-wrap:anywhere;">YouTube: <a href="${escapeHtml(link)}" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:underline;">${escapeHtml(link)}</a></div>
+      <a class="pay-btn" style="display:block; text-align:center; text-decoration:none;" href="${escapeHtml(link)}" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      ${embed ? `<div style="margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:#000;"><iframe src="${escapeHtml(embed)}" title="${escapeHtml(title||'How to buy video')}" style="width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>` : ''}`
+      : `<div class="note">No YouTube link has been added for this option yet.</div>`}`;
+}
+
+/* ============ Admin ============ */
+let adminTab = "batches";
+function isAdmin(){ return !!currentUser && normalizeEmail(currentUser.email)===normalizeEmail(ADMIN_EMAIL) && ADMIN_EMAIL.indexOf('REPLACE_WITH_')!==0; }
+function openAdmin(){
+  if(!currentUser) return openAuth();
+  if(!isAdmin()) return showToast('Admin account required');
+  renderAdminEditor();
+  document.getElementById('adminOverlay').classList.add('open');
+}
+async function loadAdminData(){
+  if(!isAdmin()) return;
+  // Load private Telegram/PDF fields only for the authenticated admin.
+  for(const kind of ['batches','books']){
+    for(const it of (state[kind]||[])){
+      try{ const d=await fsGetDoc('privateCatalog',`${kind}_${it.id}`); if(d){it.telegram=d.telegram||'';it.pdfUrl=d.pdfUrl||'';} }catch(e){}
+    }
+  }
+  try{ state.messages = await loadAllMessages(); }catch(e){ showToast('⚠️ Could not load support messages'); }
+  try{
+    const snap=await db.collection('purchases').get();
+    state.allPurchases={};
+    snap.forEach(d=>{state.allPurchases[d.id]=d.data().items||{};});
+  }catch(e){ showToast('⚠️ Could not load purchase records'); }
+  try{
+    const snap=await db.collection('purchaseRequests').where('status','==','pending').get();
+    state.pendingRequests=[]; snap.forEach(d=>state.pendingRequests.push({id:d.id,...d.data()}));
+    state.pendingRequests.sort((a,b)=>(b.at||0)-(a.at||0));
+  }catch(e){ state.pendingRequests=[]; showToast('⚠️ Could not load pending payments'); }
+}
+async function grantPendingRequest(reqId){
+  const req=(state.pendingRequests||[]).find(r=>r.id===reqId);
+  if(!req) return showToast('Request not found');
+  try{
+    const ref=db.collection('purchases').doc(req.email);
+    const snap=await ref.get();
+    const items=snap.exists?(snap.data().items||{}):{};
+    items[req.itemId]={kind:req.kind,at:items[req.itemId]?.at||Date.now(),email:req.email,uid:req.uid,paymentId:req.paymentId,status:'paid',accessUsed:items[req.itemId]?.accessUsed||false};
+    await ref.set({items,updatedAt:Date.now()},{merge:true});
+    await db.collection('purchaseRequests').doc(reqId).set({status:'granted',grantedAt:Date.now()},{merge:true});
+    showToast('Access granted');
+    renderAdminEditor();
+  }catch(e){ console.error(e); showToast('⚠️ Could not grant access'); }
+}
+async function dismissPendingRequest(reqId){
+  try{
+    await db.collection('purchaseRequests').doc(reqId).set({status:'dismissed'},{merge:true});
+    showToast('Dismissed'); renderAdminEditor();
+  }catch(e){ showToast('⚠️ Could not update request'); }
+}
+function adminRow(it,i){
+  const kind=adminTab;
+  const safeId=String(it.id).replace(/[^a-zA-Z0-9_-]/g,'_');
+  const imgs=getPosterImages(it);
+  return `<div class="admin-row" data-admin-kind="${kind}" data-admin-id="${escapeHtml(it.id)}">
+    <div class="admin-row-head">
+      <strong>${kind==='batches'?'Batch':'Book'} ${i+1}</strong>
+      <button class="admin-del" onclick="deleteItem('${kind}','${escapeHtml(it.id)}')">Delete</button>
+    </div>
+    <div class="field"><label>Title</label><input id="adm-title-${kind}-${safeId}" type="text" value="${escapeHtml(it.title||'')}" placeholder="Product title"></div>
+    <div class="field"><label>Tag / category</label><input id="adm-tag-${kind}-${safeId}" type="text" value="${escapeHtml(it.tag||'')}" placeholder="e.g. SSC · 2026"></div>
+    <div class="field"><label>Description</label><textarea id="adm-sub-${kind}-${safeId}" rows="3" placeholder="Short product description">${escapeHtml(it.sub||'')}</textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div class="field"><label>Sale price (₹)</label><input id="adm-price-${kind}-${safeId}" type="number" min="0" step="1" value="${Number(it.price)||0}"></div>
+      <div class="field"><label>MRP (₹)</label><input id="adm-mrp-${kind}-${safeId}" type="number" min="0" step="1" value="${Number(it.mrp)||0}"></div>
+    </div>
+    <div class="field"><label>Telegram access link</label><input id="adm-telegram-${kind}-${safeId}" type="url" value="${escapeHtml(it.telegram||'')}" placeholder="https://t.me/..."></div>
+    ${kind==='books'?`<div class="field"><label>PDF URL (optional)</label><input id="adm-pdf-${kind}-${safeId}" type="url" value="${escapeHtml(it.pdfUrl||'')}" placeholder="https://.../book.pdf"></div>`:''}
+    <button type="button" class="tab-btn" style="width:100%;margin:-2px 0 12px;" onclick="saveAdminItem('${kind}','${escapeHtml(it.id)}')">Save ${kind==='batches'?'batch':'book'} link &amp; details</button>
+    <div class="field"><label>Poster / cover images</label>
+      <input type="file" accept="image/*" multiple onchange="handleAdminPosterUpload('${kind}','${escapeHtml(it.id)}',this)">
+      <div class="note">You can select multiple images. The customer can swipe between them.</div>
+      ${imgs.length?`<div style="display:flex;gap:7px;overflow:auto;margin-top:8px;">${imgs.map((src,j)=>`<div style="position:relative;min-width:72px;width:72px;height:88px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#111;"><img src="${src}" style="width:100%;height:100%;object-fit:cover"><button type="button" onclick="removeAdminPoster('${kind}','${escapeHtml(it.id)}',${j})" style="position:absolute;top:2px;right:2px;border:0;border-radius:50%;width:22px;height:22px;background:#fff;color:#c33;font-weight:700;">×</button></div>`).join('')}</div>`:''}
+    </div>
+  </div>`;
+}
+
+function addItem(){
+  const kind=adminTab;
+  if(!['batches','books'].includes(kind)) return;
+  const prefix=kind==='batches'?'b':'k';
+  const id=prefix+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  state[kind].push({id,tag:'',title:'',sub:'',price:0,mrp:0,telegram:'',pdfUrl:'',color:'linear-gradient(135deg,#8b7cf6,#c9befb)',imgs:[]});
+  renderAdminEditor();
+}
+
+async function deleteItem(kind,id){
+  if(!confirm(`Delete this ${kind==='batches'?'batch':'book'}? This cannot be undone.`)) return;
+  state[kind]=state[kind].filter(x=>x.id!==id);
+  await fsDeleteDoc('privateCatalog',`${kind}_${id}`);
+  await fsDeleteDoc('posters',`${kind}_${id}`);
+  await idbDelete(`poster:${kind}:${id}`);
+  await saveCatalog();
+  showToast('Deleted');
+  renderAdminEditor();
+  render();
+}
+
+async function handleAdminPosterUpload(kind,id,input){
+  const it=findItem(kind,id);
+  if(!it || !input.files?.length) return;
+  const files=[...input.files];
+  if(files.some(f=>f.size>4*1024*1024)){
+    showToast('⚠️ Each image must be 4 MB or smaller'); input.value=''; return;
+  }
+  try{
+    const encoded=await Promise.all(files.map(file=>new Promise((resolve,reject)=>{
+      const r=new FileReader(); r.onload=()=>resolve(String(r.result)); r.onerror=reject; r.readAsDataURL(file);
+    })));
+    it.imgs=[...getPosterImages(it),...encoded];
+    const ok=await savePoster(kind,id,it.imgs);
+    if(ok){showToast('Poster images saved'); renderAdminEditor();}
+  }catch(e){console.error(e);showToast('⚠️ Could not read image');}
+  input.value='';
+}
+
+async function removeAdminPoster(kind,id,index){
+  const it=findItem(kind,id); if(!it) return;
+  it.imgs=getPosterImages(it).filter((_,i)=>i!==index);
+  await savePoster(kind,id,it.imgs);
+  renderAdminEditor();
+}
+
+function readAdminField(kind,id,field){
+  const safeId=String(id).replace(/[^a-zA-Z0-9_-]/g,'_');
+  const el=document.getElementById(`adm-${field}-${kind}-${safeId}`);
+  return el ? el.value.trim() : '';
+}
+
+async function renderAdminEditor(){
+  await loadAdminData();
+  const body=document.getElementById('adminBody');
+  const items=state[adminTab]||[];
+  body.innerHTML=`
+    <div class="tab-row">
+      <button class="tab-btn ${adminTab==='batches'?'active':''}" onclick="adminTab='batches'; renderAdminEditor()">Batches</button>
+      <button class="tab-btn ${adminTab==='books'?'active':''}" onclick="adminTab='books'; renderAdminEditor()">Books</button>
+      <button class="tab-btn ${adminTab==='purchases'?'active':''}" onclick="adminTab='purchases'; renderAdminEditor()">Purchases</button>
+      <button class="tab-btn ${adminTab==='messages'?'active':''}" onclick="adminTab='messages'; renderAdminEditor()">Messages${state.messages.length?' ('+state.messages.length+')':''}</button>
+      <button class="tab-btn ${adminTab==='site'?'active':''}" onclick="adminTab='site'; renderAdminEditor()">How to buy</button>
+    </div>
+    ${adminTab==='messages' ? renderAdminMessages() : adminTab==='purchases' ? renderAdminPurchases() : adminTab==='site' ? renderAdminSite() : `
+      <div class="admin-list">${items.map((it,i)=>adminRow(it,i)).join('')}</div>
+      <button class="add-btn" onclick="addItem()">+ Add ${adminTab==='batches'?'batch':'book'}</button>
+      <div class="save-bar"><button class="pay-btn" onclick="saveAdmin()">Save changes</button></div>`}`;
+}
+function renderAdminSite(){
+  const opts=(state.site.options&&state.site.options.length===5)?state.site.options:emptySiteOptions();
+  return `
+    <div class="note" style="margin-bottom:10px;"><strong>How to buy — 5 options</strong><br>Customize all 5 slots below. Customers tap <strong>How to buy?</strong> on a product, choose an option, and then see its title plus the YouTube link. Leave a slot blank to hide it.</div>
+    ${opts.map((o,i)=>`
+    <div class="admin-row">
+      <div class="admin-row-head"><strong>Option ${i+1}</strong></div>
+      <div class="field"><label>Title</label><input id="siteTitleInput${i}" type="text" placeholder="e.g. Watch our free demo class" value="${escapeHtml(o.title||'')}"></div>
+      <div class="field"><label>YouTube link</label><input id="siteYoutubeInput${i}" type="text" placeholder="https://youtube.com/watch?v=..." value="${escapeHtml(o.youtubeLink||'')}"></div>
+    </div>`).join('')}
+    <div class="save-bar"><button class="pay-btn" onclick="saveSiteFromAdmin()">Save changes</button></div>`;
+}
+async function saveSiteFromAdmin(){
+  const options=[];
+  for(let i=0;i<5;i++){
+    const title=document.getElementById('siteTitleInput'+i).value.trim();
+    const youtubeLink=document.getElementById('siteYoutubeInput'+i).value.trim();
+    if(youtubeLink && !youtubeEmbedUrl(youtubeLink)){ showToast(`⚠️ Option ${i+1}: that doesn't look like a valid YouTube link`); return; }
+    options.push({title, youtubeLink});
+  }
+  const ok=await saveSiteSettings(options);
+  if(ok){
+    showToast('How-to-buy options saved');
+    adminTab='site';
+    renderAdminEditor();
+    render();
+  }
+}
+function renderAdminPurchases(){
+  const pending=state.pendingRequests||[];
+  const pendingRows=pending.map(r=>{
+    const it=findItem(r.kind,r.itemId);
+    return `<div class="admin-row"><div class="admin-row-head"><strong>${escapeHtml(r.email)}</strong></div><div class="note" style="text-align:left;">${it?escapeHtml(it.title):r.itemId} (${r.kind==='batches'?'Batch':'Book'}) — ₹${(r.amount/100).toFixed(0)}<br>UTR / Reference: ${escapeHtml(r.paymentId||'—')}<br>Requested: ${r.at?new Date(r.at).toLocaleString():'—'}</div><div style="display:flex;gap:8px;margin-top:8px;"><button class="pay-btn" style="flex:1;" onclick="grantPendingRequest('${r.id}')">✓ Grant access</button><button class="tab-btn" style="flex:1;" onclick="dismissPendingRequest('${r.id}')">Dismiss</button></div></div>`;
+  }).join('');
+  const rows=[];
+  for(const email in state.allPurchases){
+    for(const id in state.allPurchases[email]){
+      const p=state.allPurchases[email][id]; const it=findItem(p.kind,id);
+      rows.push(`<div class="admin-row"><div class="admin-row-head"><strong>${escapeHtml(email)}</strong></div><div class="note" style="text-align:left;">${it?escapeHtml(it.title):id} (${p.kind==='batches'?'Batch':'Book'})<br>Payment: ${escapeHtml(p.paymentId||'verified')}<br>Status: ${escapeHtml(p.status||'paid')}</div></div>`);
+    }
+  }
+  return `<div class="note" style="text-align:left;margin-bottom:10px;"><strong>Automatic Razorpay payments:</strong> successful payments are verified by the server and access is granted automatically. No UTR or manual approval is required.</div>
+  ${pendingRows ? `<h3 style="margin:16px 0 10px;">Legacy pending requests</h3><div class="admin-list">${pendingRows}</div>` : ''}
+  <h3 style="margin:16px 0 10px;">Granted purchases</h3>
+  <div class="admin-list">${rows.length?rows.join(''):'<div class="note">No purchases yet.</div>'}</div>`;
+}
+async function saveAdminItem(kind,id){
+  if(!isAdmin()) return showToast('⚠️ Admin account required');
+  const it=findItem(kind,id);
+  if(!it) return showToast('⚠️ Item not found');
+  const telegram=readAdminField(kind,id,'telegram');
+  const pdfUrl=kind==='books' ? readAdminField(kind,id,'pdf') : '';
+  if(telegram && !/^https?:\/\/t\.me\//i.test(telegram)){
+    return showToast('⚠️ Telegram link should start with https://t.me/');
+  }
+  const title=readAdminField(kind,id,'title');
+  const tag=readAdminField(kind,id,'tag');
+  const sub=readAdminField(kind,id,'sub');
+  const price=Math.max(0,Number(readAdminField(kind,id,'price'))||0);
+  const mrp=Math.max(0,Number(readAdminField(kind,id,'mrp'))||0);
+  it.title=title; it.tag=tag; it.sub=sub; it.price=price; it.mrp=mrp; it.telegram=telegram;
+  if(kind==='books') it.pdfUrl=pdfUrl;
+
+  // Save the sensitive access link through the Netlify server using the
+  // Firebase Admin SDK. This avoids client-side Firestore-rule failures and
+  // makes the link persist reliably in privateCatalog for paid access.
+  try{
+    const token=await currentUser.getIdToken(true);
+    const res=await fetch(`${API_BASE}/admin-save-item`,{
+      method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+      body:JSON.stringify({kind,id,title,tag,sub,price,mrp,telegram,pdfUrl})
+    });
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(data.error||`Server save failed (${res.status})`);
+  }catch(e){
+    console.error(e);
+    showToast('⚠️ Telegram save failed — '+(e.message||'please try again'));
+    return false;
+  }
+
+  // Confirm the private record can be read back by the admin client too.
+  try{
+    const verified=await fsGetDoc('privateCatalog',`${kind}_${id}`);
+    if(!verified || (verified.telegram||'')!==telegram || (verified.pdfUrl||'')!==pdfUrl){
+      showToast('⚠️ Save was sent but could not be verified yet');
+      return false;
+    }
+  }catch(e){
+    // Server save already succeeded; don't report a false failure merely
+    // because a client-side Firestore read is temporarily unavailable.
+  }
+  await idbSet(`catalog:${kind}:list`,kind==='batches'?stripImages(state.batches):stripImages(state.books));
+  showToast('✓ Telegram link & details saved');
+  return true;
+}
+
+async function saveAdmin(){
+  if(!isAdmin()) return showToast('⚠️ Admin account required');
+  if(!['batches','books'].includes(adminTab)) return;
+  const kind=adminTab;
+  for(const it of state[kind]){
+    it.title=readAdminField(kind,it.id,'title');
+    it.tag=readAdminField(kind,it.id,'tag');
+    it.sub=readAdminField(kind,it.id,'sub');
+    it.price=Math.max(0,Number(readAdminField(kind,it.id,'price'))||0);
+    it.mrp=Math.max(0,Number(readAdminField(kind,it.id,'mrp'))||0);
+    it.telegram=readAdminField(kind,it.id,'telegram');
+    if(kind==='books') it.pdfUrl=readAdminField(kind,it.id,'pdf');
+  }
+  const ok=await saveCatalog();
+  if(ok){
+    showToast(`${kind==='batches'?'Batches':'Books'} saved successfully`);
+    await renderAdminEditor();
+    render();
+  }
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+async function handleRazorpayReturn(){
+  // Standard Razorpay Checkout uses the handler callback above. This function
+  // also recovers a purchase if a user returns to the page after a transient
+  // browser/network interruption and the payment is already recorded.
+  const params=new URLSearchParams(location.search);
+  const orderId=params.get('razorpay_order_id'),paymentId=params.get('razorpay_payment_id'),signature=params.get('razorpay_signature');
+  if(!orderId||!paymentId||!signature||!currentUser) return;
+  try{
+    const token=await firebase.auth().currentUser.getIdToken(true);
+    const res=await fetch(`${API_BASE}/verify-payment`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({orderId,paymentId,signature})});
+    if(!res.ok) return;
+    await loadMyPurchases(currentUser.email);
+    const saved=await db.collection('orders').doc(orderId).get();
+    const o=saved.exists?saved.data():{};
+    if(o.kind&&o.itemId) showSuccess(o.kind,o.itemId,true,false);
+    history.replaceState({},document.title,location.pathname);
+  }catch(e){console.error(e);}
+}
+
+/* ============ Init ============ */
+(async function init(){
+  // Render a visible loading state first; never leave the middle of the page
+  // as an unexplained blank area while Firebase/network requests are pending.
+  refreshAccountButton();
+
+  // Catalog/settings are independent, so don't make one slow request block
+  // the other. loadCatalog itself paints the catalog before poster downloads.
+  await Promise.allSettled([loadCatalog(), loadSiteSettings()]);
+  render();
+
+  auth.onAuthStateChanged(async user=>{
+    try{
+      if(user){
+        const profile=await getProfile(user);
+        currentUser={uid:user.uid,email:user.email,name:profile.name||user.displayName||user.email.split('@')[0],mobile:profile.mobile||''};
+        refreshAccountButton();
+        render();
+        await loadMyPurchases(user.email);
+        refreshAccountButton();
+        render();
+        await handleRazorpayReturn();
+      }else{
+        currentUser=null;
+        state.purchases={};
+        refreshAccountButton();
+        render();
+      }
+    }catch(e){
+      console.error('Auth state handling failed:',e);
+      currentUser=null;
+      refreshAccountButton();
+      render();
+    }finally{
+      authReady=true;
+      refreshAccountButton();
+    }
+  }, err=>{
+    console.error('Firebase Auth listener error:',err);
+    authReady=true;
+    refreshAccountButton();
+    showToast('⚠️ Login service could not initialize');
+  });
+})();
+</script>
+</body>
+</html>
