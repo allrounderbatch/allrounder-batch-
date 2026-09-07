@@ -299,7 +299,7 @@
     background:var(--surface-2);
   }
   /* Batches use a wide 16:9 thumbnail poster instead of the tall 3:4 book
-     cover shape â€” books are left untouched. */
+     cover shape — books are left untouched. */
   .item-banner.kind-batches, .mini-banner.kind-batches{ aspect-ratio:16/9; }
   .mini-banner .poster-gallery{height:100%;}
   .mini-banner .poster-slide img{object-fit:contain;}
@@ -412,7 +412,7 @@
   <button class="account-btn" id="accountBtn" onclick="openAuth()">Login / Sign up</button>
 </header>
 
-<main id="app"><div class="app-loading"><div class="loading-card"><div class="loading-spinner"></div><div class="loading-title">Loading All Competition Breaker</div><div class="loading-sub">Getting your batches and books readyâ€¦</div></div></div></main>
+<main id="app"><div class="app-loading"><div class="loading-card"><div class="loading-spinner"></div><div class="loading-title">Loading All Competition Breaker</div><div class="loading-sub">Getting your batches and books ready…</div></div></div></main>
 
 <nav class="bottom-nav">
   <button class="nav-btn" id="navHome" onclick="goHome()">
@@ -442,7 +442,7 @@
   <div class="modal">
     <div class="modal-head">
       <h3 id="authTitle">Login</h3>
-      <button class="close-x" onclick="closeModal('authOverlay')">âœ•</button>
+      <button class="close-x" onclick="closeModal('authOverlay')">✕</button>
     </div>
     <div class="auth-switch">
       <button class="auth-tab active" id="loginTab" onclick="setAuthMode('login')">Login</button>
@@ -457,7 +457,7 @@
   <div class="modal">
     <div class="modal-head">
       <h3>Checkout</h3>
-      <button class="close-x" onclick="closeModal('checkoutOverlay')">âœ•</button>
+      <button class="close-x" onclick="closeModal('checkoutOverlay')">✕</button>
     </div>
     <div id="checkoutBody"></div>
   </div>
@@ -468,7 +468,7 @@
   <div class="modal">
     <div class="modal-head">
       <h3>&nbsp;</h3>
-      <button class="close-x" onclick="closeModal('successOverlay')">âœ•</button>
+      <button class="close-x" onclick="closeModal('successOverlay')">✕</button>
     </div>
     <div id="successBody"></div>
   </div>
@@ -479,7 +479,7 @@
   <div class="modal">
     <div class="modal-head">
       <h3>Message Support</h3>
-      <button class="close-x" onclick="closeModal('supportMessageOverlay')">âœ•</button>
+      <button class="close-x" onclick="closeModal('supportMessageOverlay')">✕</button>
     </div>
     <div class="field">
       <label>Your name</label>
@@ -499,7 +499,7 @@
   <div class="modal" style="max-width:520px;">
     <div class="modal-head">
       <h3>Admin panel</h3>
-      <button class="close-x" onclick="closeModal('adminOverlay')">âœ•</button>
+      <button class="close-x" onclick="closeModal('adminOverlay')">✕</button>
     </div>
     <div id="adminBody"></div>
   </div>
@@ -510,21 +510,21 @@
 <script>
 /* ============ Safety net: surface any silent failure as a visible message
    instead of buttons doing "nothing". This is the #1 fix for reports of
-   "login/signup button does nothing" â€” previously such errors only showed
+   "login/signup button does nothing" — previously such errors only showed
    up in the browser console, invisible to a normal visitor. ============ */
 window.addEventListener('error', function(e){
   console.error('Uncaught error:', e.error||e.message);
-  try{ showToast('âš ï¸ Something went wrong: '+(e.message||'unknown error')); }catch(_){}
+  try{ showToast('⚠️ Something went wrong: '+(e.message||'unknown error')); }catch(_){}
 });
 window.addEventListener('unhandledrejection', function(e){
   console.error('Unhandled promise rejection:', e.reason);
-  try{ showToast('âš ï¸ '+(e.reason?.message||'Something went wrong')); }catch(_){}
+  try{ showToast('⚠️ '+(e.reason?.message||'Something went wrong')); }catch(_){}
 });
 
 /* ============ Sample seed data (used only if storage is empty) ============ */
 const SEED_BATCHES = [
-  {id:"b1", tag:"SSC Â· 2026", title:"SSC CGL Complete Batch", sub:"Full syllabus live classes, PDFs and weekly tests for SSC CGL Tier 1 & 2.", price:999, mrp:2499, telegram:"https://t.me/+your_invite_link", color:"linear-gradient(135deg,#F5A623,#ffd98a)"},
-  {id:"b2", tag:"Banking Â· 2026", title:"Bank PO Foundation Batch", sub:"Quant, reasoning and English for IBPS/SBI PO with daily practice sets.", price:799, mrp:1999, telegram:"https://t.me/+your_invite_link", color:"linear-gradient(135deg,#2DD4BF,#9ff5e8)"}
+  {id:"b1", tag:"SSC · 2026", title:"SSC CGL Complete Batch", sub:"Full syllabus live classes, PDFs and weekly tests for SSC CGL Tier 1 & 2.", price:999, mrp:2499, telegram:"https://t.me/+your_invite_link", color:"linear-gradient(135deg,#F5A623,#ffd98a)"},
+  {id:"b2", tag:"Banking · 2026", title:"Bank PO Foundation Batch", sub:"Quant, reasoning and English for IBPS/SBI PO with daily practice sets.", price:799, mrp:1999, telegram:"https://t.me/+your_invite_link", color:"linear-gradient(135deg,#2DD4BF,#9ff5e8)"}
 ];
 const SEED_BOOKS = [
   {id:"k1", tag:"2026 Edition", title:"Maths Kingmaker PYQs", sub:"6,600+ previous year questions, chapter-wise with solutions.", price:149, mrp:399, telegram:"", pdfUrl:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", color:"linear-gradient(135deg,#F26B6B,#ffb3ac)"},
@@ -540,7 +540,7 @@ let currentUser = null;
 let authReady = false;
 let authMode = "login";
 
-/* ============ Firebase / Firestore (shared database â€” every visitor,
+/* ============ Firebase / Firestore (shared database — every visitor,
    on every device, reads and writes the same data here) ============ */
 const firebaseConfig = {
   apiKey: "AIzaSyAXqqPpEVhx6z_Fhuduy69NhUtbkAwXOpc",
@@ -554,8 +554,8 @@ const firebaseConfig = {
 if(typeof firebase === 'undefined'){
   document.body.innerHTML = '<div style="padding:24px;text-align:center;font-family:sans-serif;color:#F1F2F9;background:#0B0D1F;min-height:100vh;">'
     + '<h2>Could not load required scripts</h2>'
-    + '<p>Firebase failed to load â€” this is usually caused by an ad blocker, browser extension, or the hosting provider injecting scripts that conflict with this page. Please try a different browser/network, or contact support.</p></div>';
-  throw new Error('Firebase SDK failed to load â€” aborting app init.');
+    + '<p>Firebase failed to load — this is usually caused by an ad blocker, browser extension, or the hosting provider injecting scripts that conflict with this page. Please try a different browser/network, or contact support.</p></div>';
+  throw new Error('Firebase SDK failed to load — aborting app init.');
 }
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -591,7 +591,7 @@ async function fsDeleteDoc(collection, id){
 /* ============ IndexedDB (primary store) ============
    localStorage caps out around 5MB per site. Poster images are stored as
    base64 text, so a handful of books with photos was enough to hit that
-   wall â€” saves after that point failed silently. IndexedDB has a much
+   wall — saves after that point failed silently. IndexedDB has a much
    larger quota (typically hundreds of MB+) and is the right tool for
    storing images, so it's now the primary store; localStorage is only
    used for small session bits. */
@@ -663,7 +663,7 @@ function localWrite(key, value){
 /* Each book/batch's poster images are stored under their own key
    (poster:<kind>:<id>) separate from the small text list (title, price,
    etc). This way editing one book's title, or uploading one poster,
-   only touches that book's data â€” not the whole catalog â€” so saving
+   only touches that book's data — not the whole catalog — so saving
    stays fast even with 30-40+ books full of images. */
 function stripImages(items){
   return items.map(({imgs, img, telegram, pdfUrl, ...rest}) => rest);
@@ -679,7 +679,7 @@ function attachImages(items, imageMap){
 }
 async function loadImagesFor(kind, items){
   const map = {};
-  // Fetch every item's poster in parallel instead of one-at-a-time â€”
+  // Fetch every item's poster in parallel instead of one-at-a-time —
   // a serial loop here was the main cause of the long blank-screen wait
   // on load (each item added a full network round trip before anything
   // rendered).
@@ -691,7 +691,7 @@ async function loadImagesFor(kind, items){
         await idbSet(`poster:${kind}:${it.id}`, doc.imgs);
         return;
       }
-    }catch(e){ /* offline â€” fall through to local cache below */ }
+    }catch(e){ /* offline — fall through to local cache below */ }
     const cached = await idbGet(`poster:${kind}:${it.id}`);
     if(cached && cached.length) map[it.id] = cached;
   }));
@@ -707,11 +707,11 @@ async function loadCatalog(){
   }catch(e){ reachable = false; }
 
   if(!reachable){
-    // No internet right now â€” show whatever this device last saw, so the
+    // No internet right now — show whatever this device last saw, so the
     // site still opens (read-only) instead of a blank page.
     batchesMeta = await idbGet('catalog:batches:list') || [];
     booksMeta = await idbGet('catalog:books:list') || [];
-    showToast('âš ï¸ Offline â€” showing last saved catalog');
+    showToast('⚠️ Offline — showing last saved catalog');
   } else if(batchesMeta === null || booksMeta === null){
     // Genuinely first time this database has been used. One-time migration:
     // pull in whatever this specific device already had saved locally
@@ -768,7 +768,7 @@ async function saveCatalog(){
   const okB = await fsSetDoc('catalog','batches',{items:publicB});
   const okK = await fsSetDoc('catalog','books',{items:publicK});
   if(!okB || !okK){
-    showToast('âš ï¸ Catalog save failed â€” check your internet connection and admin account');
+    showToast('⚠️ Catalog save failed — check your internet connection and admin account');
     return false;
   }
   const privateDocs=[...state.batches.map(it=>({kind:'batches',it})),...state.books.map(it=>({kind:'books',it}))];
@@ -780,7 +780,7 @@ async function saveCatalog(){
     if(!ok) privateOk=false;
   }
   if(!privateOk){
-    showToast('âš ï¸ Telegram/PDF could not be saved â€” check Firebase admin permission');
+    showToast('⚠️ Telegram/PDF could not be saved — check Firebase admin permission');
     return false;
   }
   await idbSet('catalog:batches:list', publicB);
@@ -824,8 +824,8 @@ async function saveSiteSettings(options){
   }catch(e){
     console.error('How-to-buy settings save failed:', e);
     const msg = e && e.code === 'permission-denied'
-      ? 'âš ï¸ Admin permission denied. Sign in with the configured admin email.'
-      : 'âš ï¸ Save failed â€” check Firebase connection and try again.';
+      ? '⚠️ Admin permission denied. Sign in with the configured admin email.'
+      : '⚠️ Save failed — check Firebase connection and try again.';
     showToast(msg);
     return false;
   }
@@ -849,7 +849,7 @@ function youtubeEmbedUrl(link){
 }
 async function savePoster(kind, id, imgs){
   const ok = await fsSetDoc('posters', `${kind}_${id}`, {imgs});
-  if(!ok) showToast('âš ï¸ Could not save poster â€” check your internet connection');
+  if(!ok) showToast('⚠️ Could not save poster — check your internet connection');
   await idbSet(`poster:${kind}:${id}`, imgs);
 }
 async function deletePoster(kind, id){
@@ -865,7 +865,7 @@ async function persistPurchases(email, items){
     return true;
   }catch(e){
     console.error(e);
-    showToast('âš ï¸ Could not sync purchase data');
+    showToast('⚠️ Could not sync purchase data');
     return false;
   }
 }
@@ -901,17 +901,17 @@ function openSupportMessage(){
 async function sendSupportMessage(){
   const name = (document.getElementById('supportName').value||'').trim();
   const message = (document.getElementById('supportMessage').value||'').trim();
-  if(!message){ showToast('âš ï¸ Please write a message before sending'); return; }
+  if(!message){ showToast('⚠️ Please write a message before sending'); return; }
   const btn = document.querySelector('#supportMessageOverlay .pay-btn');
-  if(btn){ btn.disabled = true; btn.textContent = 'Sendingâ€¦'; }
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
   const msg = { id: 'msg_'+Date.now()+'_'+Math.random().toString(36).slice(2,8), name: name || 'Anonymous', message, at: Date.now() };
   const ok = await addSupportMessageDoc(msg);
   if(btn){ btn.disabled = false; btn.textContent = 'Send message'; }
   if(ok){
-    showToast('âœ“ Message sent â€” we will get back to you soon');
+    showToast('✓ Message sent — we will get back to you soon');
     closeModal('supportMessageOverlay');
   }else{
-    showToast('âš ï¸ Could not send message â€” check your internet connection and try again');
+    showToast('⚠️ Could not send message — check your internet connection and try again');
   }
 }
 
@@ -931,21 +931,21 @@ async function getProfile(user){
 function refreshAccountButton(){
   const b=document.getElementById('accountBtn'); if(!b) return;
   if(currentUser){
-    b.textContent='ðŸ‘¤ '+(currentUser.name||currentUser.email.split('@')[0]);
+    b.textContent='👤 '+(currentUser.name||currentUser.email.split('@')[0]);
     b.classList.add('logged'); b.disabled=false; b.setAttribute('aria-label','Open account');
   } else if(!authReady){
-    b.textContent='Checking sessionâ€¦'; b.classList.remove('logged'); b.disabled=true;
+    b.textContent='Checking session…'; b.classList.remove('logged'); b.disabled=true;
   } else {
     b.textContent='Login / Sign up'; b.classList.remove('logged'); b.disabled=false; b.setAttribute('aria-label','Login or sign up');
   }
 }
 function setAuthMode(mode){authMode=mode; renderAuthBody();}
 function openAuth(){
-  if(!authReady) return showToast('Please wait â€” checking your login session');
+  if(!authReady) return showToast('Please wait — checking your login session');
   if(currentUser){
     document.getElementById('authTitle').textContent='My Account';
     document.getElementById('loginTab').classList.remove('active'); document.getElementById('signupTab').classList.remove('active');
-    document.getElementById('authBody').innerHTML=`<div class="success-icon">âœ“</div><div class="success-title">${escapeHtml(currentUser.name||'Account')}</div><div class="success-sub">${escapeHtml(currentUser.email)}</div><button class="pay-btn" onclick="logoutUser()">Logout</button>`;
+    document.getElementById('authBody').innerHTML=`<div class="success-icon">✓</div><div class="success-title">${escapeHtml(currentUser.name||'Account')}</div><div class="success-sub">${escapeHtml(currentUser.email)}</div><button class="pay-btn" onclick="logoutUser()">Logout</button>`;
   } else {authMode='login'; renderAuthBody();}
   document.getElementById('authOverlay').classList.add('open');
 }
@@ -983,8 +983,8 @@ async function signupUser(){
     showToast('Account created successfully');
   }catch(e){
     console.error(e);
-    const msg=e.code==='auth/email-already-in-use'?'Account already exists. Please login.':(e.code==='auth/operation-not-allowed'?'Email/password login is not enabled in Firebase yet. (Firebase Console â†’ Authentication â†’ Sign-in method â†’ enable Email/Password)':(e.code==='auth/unauthorized-domain'?'This website domain is not authorized in Firebase Console â†’ Authentication â†’ Settings â†’ Authorized domains.':(e.code==='auth/weak-password'?'Password is too weak â€” use at least 6 characters.':e.message||'Could not create account')));
-    showToast('âš ï¸ '+msg);
+    const msg=e.code==='auth/email-already-in-use'?'Account already exists. Please login.':(e.code==='auth/operation-not-allowed'?'Email/password login is not enabled in Firebase yet. (Firebase Console → Authentication → Sign-in method → enable Email/Password)':(e.code==='auth/unauthorized-domain'?'This website domain is not authorized in Firebase Console → Authentication → Settings → Authorized domains.':(e.code==='auth/weak-password'?'Password is too weak — use at least 6 characters.':e.message||'Could not create account')));
+    showToast('⚠️ '+msg);
   }
 }
 async function loginUser(){
@@ -999,15 +999,15 @@ async function loginUser(){
     closeModal('authOverlay'); showToast('Login successful');
   }catch(e){
     console.error(e);
-    const msg=(e.code==='auth/user-not-found'||e.code==='auth/invalid-credential'||e.code==='auth/wrong-password')?'Wrong email or password':(e.code==='auth/unauthorized-domain'?'This website domain is not authorized in Firebase Console â†’ Authentication â†’ Settings â†’ Authorized domains.':(e.code==='auth/operation-not-allowed'?'Email/password login is not enabled in Firebase yet.':e.message||'Login failed'));
-    showToast('âš ï¸ '+msg);
+    const msg=(e.code==='auth/user-not-found'||e.code==='auth/invalid-credential'||e.code==='auth/wrong-password')?'Wrong email or password':(e.code==='auth/unauthorized-domain'?'This website domain is not authorized in Firebase Console → Authentication → Settings → Authorized domains.':(e.code==='auth/operation-not-allowed'?'Email/password login is not enabled in Firebase yet.':e.message||'Login failed'));
+    showToast('⚠️ '+msg);
   }
 }
 async function resetPassword(){
   const email=normalizeEmail(document.getElementById('authEmail')?.value);
   if(!email || !email.includes('@')) return showToast('Enter your email first');
   try{ await firebase.auth().sendPasswordResetEmail(email); showToast('Password reset email sent'); }
-  catch(e){ showToast('âš ï¸ Could not send reset email'); }
+  catch(e){ showToast('⚠️ Could not send reset email'); }
 }
 async function logoutUser(){ await auth.signOut(); currentUser=null; refreshAccountButton(); closeModal('authOverlay'); render(); showToast('Logged out'); }
 function userPurchases(){ return currentUser ? (state.purchases[currentUser.email]||{}) : {}; }
@@ -1097,7 +1097,7 @@ function renderSupport(){
       <h4>Frequently asked questions</h4>
       <div class="faq-item">
         <div class="q">I paid but didn't get access. What now?</div>
-        <div class="a">Message us on WhatsApp with your payment screenshot â€” we'll fix it within a few hours.</div>
+        <div class="a">Message us on WhatsApp with your payment screenshot — we'll fix it within a few hours.</div>
       </div>
       <div class="faq-item">
         <div class="q">Can I get a refund?</div>
@@ -1112,10 +1112,10 @@ function renderSupport(){
 }
 function renderDMCA(){
   app.innerHTML = `
-    <div class="section-head"><h2>ðŸ“„ DMCA &amp; Copyright policy<span>Please read carefully</span></h2></div>
+    <div class="section-head"><h2>📄 DMCA &amp; Copyright policy<span>Please read carefully</span></h2></div>
 
     <div class="support-card">
-      <h4>ðŸ›‘ Our Commitment</h4>
+      <h4>🛑 Our Commitment</h4>
       <p>We respect and protect the intellectual property rights of creators, authors, publishers, and copyright owners. If you believe that any content published on our website infringes upon your copyright, please notify us with the relevant details and supporting proof of ownership. We are committed to reviewing all valid copyright complaints in good faith and, where appropriate, promptly removing or disabling access to the infringing content from our website and taking reasonable steps to prevent its continued availability.</p>
     </div>
 
@@ -1129,35 +1129,35 @@ function renderDMCA(){
 
 function renderHowToBuy(){
   app.innerHTML = `
-    <div class="section-head"><h2>ðŸ›’ How to Buy a Book or Batch<span>Step-by-step guide</span></h2></div>
+    <div class="section-head"><h2>🛒 How to Buy a Book or Batch<span>Step-by-step guide</span></h2></div>
 
     <div class="support-card">
       <h4>English</h4>
       <ol style="margin:0;padding-left:20px;line-height:1.9;">
-        <li><strong>Choose what you want</strong> â€” Tap the Book or Batch you'd like to buy.</li>
-        <li><strong>Check the price</strong> â€” The price is shown on the item page.</li>
-        <li><strong>Click Buy/Pay</strong> â€” Tap the payment button to start your purchase.</li>
-        <li><strong>Razorpay checkout opens</strong> â€” A secure payment window opens (may take a moment to load).</li>
-        <li><strong>Choose your payment method</strong> â€” UPI (scan QR or Google Pay/PhonePe), Net Banking, or Card.</li>
-        <li><strong>Complete the payment</strong> â€” Wait a few seconds without closing the page for confirmation.</li>
-        <li><strong>Purchase confirmed</strong> â€” You'll return to the home page with a success notification.</li>
-        <li><strong>Go to "My Purchases"</strong> â€” Your purchased item will be listed there.</li>
-        <li><strong>Access your content</strong> â€” Tap the item to get your Telegram link and download your material.</li>
+        <li><strong>Choose what you want</strong> — Tap the Book or Batch you'd like to buy.</li>
+        <li><strong>Check the price</strong> — The price is shown on the item page.</li>
+        <li><strong>Click Buy/Pay</strong> — Tap the payment button to start your purchase.</li>
+        <li><strong>Razorpay checkout opens</strong> — A secure payment window opens (may take a moment to load).</li>
+        <li><strong>Choose your payment method</strong> — UPI (scan QR or Google Pay/PhonePe), Net Banking, or Card.</li>
+        <li><strong>Complete the payment</strong> — Wait a few seconds without closing the page for confirmation.</li>
+        <li><strong>Purchase confirmed</strong> — You'll return to the home page with a success notification.</li>
+        <li><strong>Go to "My Purchases"</strong> — Your purchased item will be listed there.</li>
+        <li><strong>Access your content</strong> — Tap the item to get your Telegram link and download your material.</li>
       </ol>
     </div>
 
     <div class="support-card">
-      <h4>à¤¹à¤¿à¤‚à¤¦à¥€ (Hindi)</h4>
+      <h4>हिंदी (Hindi)</h4>
       <ol style="margin:0;padding-left:20px;line-height:1.9;">
-        <li><strong>à¤…à¤ªà¤¨à¥€ à¤ªà¤¸à¤‚à¤¦ à¤šà¥à¤¨à¥‡à¤‚</strong> â€” à¤œà¥‹ à¤•à¤¿à¤¤à¤¾à¤¬ à¤¯à¤¾ à¤¬à¥ˆà¤š à¤†à¤ªà¤•à¥‹ à¤šà¤¾à¤¹à¤¿à¤, à¤‰à¤¸ à¤ªà¤° à¤Ÿà¥ˆà¤ª à¤•à¤°à¥‡à¤‚à¥¤</li>
-        <li><strong>à¤•à¥€à¤®à¤¤ à¤¦à¥‡à¤–à¥‡à¤‚</strong> â€” à¤†à¤‡à¤Ÿà¤® à¤ªà¥‡à¤œ à¤ªà¤° à¤¦à¥€ à¤—à¤ˆ à¤•à¥€à¤®à¤¤ à¤¦à¥‡à¤– à¤²à¥‡à¤‚à¥¤</li>
-        <li><strong>Buy/Pay à¤¬à¤Ÿà¤¨ à¤¦à¤¬à¤¾à¤à¤‚</strong> â€” à¤­à¥à¤—à¤¤à¤¾à¤¨ à¤¶à¥à¤°à¥‚ à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤¬à¤Ÿà¤¨ à¤ªà¤° à¤Ÿà¥ˆà¤ª à¤•à¤°à¥‡à¤‚à¥¤</li>
-        <li><strong>Razorpay à¤šà¥‡à¤•à¤†à¤‰à¤Ÿ à¤–à¥à¤²à¥‡à¤—à¤¾</strong> â€” à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤ªà¥‡à¤®à¥‡à¤‚à¤Ÿ à¤µà¤¿à¤‚à¤¡à¥‹ à¤–à¥à¤²à¥‡à¤—à¥€ (à¤¥à¥‹à¤¡à¤¼à¤¾ à¤¸à¤®à¤¯ à¤²à¤— à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆ)à¥¤</li>
-        <li><strong>à¤ªà¥‡à¤®à¥‡à¤‚à¤Ÿ à¤¤à¤°à¥€à¤•à¤¾ à¤šà¥à¤¨à¥‡à¤‚</strong> â€” UPI (QR à¤¸à¥à¤•à¥ˆà¤¨/Google Pay/PhonePe), à¤¨à¥‡à¤Ÿ à¤¬à¥ˆà¤‚à¤•à¤¿à¤‚à¤—, à¤¯à¤¾ à¤•à¤¾à¤°à¥à¤¡à¥¤</li>
-        <li><strong>à¤­à¥à¤—à¤¤à¤¾à¤¨ à¤ªà¥‚à¤°à¤¾ à¤•à¤°à¥‡à¤‚</strong> â€” à¤ªà¥‡à¤œ à¤¬à¤‚à¤¦ à¤•à¤¿à¤ à¤¬à¤¿à¤¨à¤¾ à¤•à¥à¤› à¤¸à¥‡à¤•à¤‚à¤¡ à¤‡à¤‚à¤¤à¤œà¤¼à¤¾à¤° à¤•à¤°à¥‡à¤‚à¥¤</li>
-        <li><strong>à¤–à¤°à¥€à¤¦à¤¾à¤°à¥€ à¤¸à¤«à¤²</strong> â€” à¤¹à¥‹à¤® à¤ªà¥‡à¤œ à¤ªà¤° à¤¸à¤«à¤²à¤¤à¤¾ à¤•à¤¾ à¤¨à¥‹à¤Ÿà¤¿à¤«à¤¿à¤•à¥‡à¤¶à¤¨ à¤¦à¤¿à¤–à¥‡à¤—à¤¾à¥¤</li>
-        <li><strong>"My Purchases" à¤®à¥‡à¤‚ à¤œà¤¾à¤à¤‚</strong> â€” à¤†à¤ªà¤•à¥€ à¤–à¤°à¥€à¤¦à¥€ à¤¹à¥à¤ˆ à¤šà¥€à¤œà¤¼ à¤µà¤¹à¤¾à¤‚ à¤¦à¤¿à¤–à¥‡à¤—à¥€à¥¤</li>
-        <li><strong>à¤•à¤‚à¤Ÿà¥‡à¤‚à¤Ÿ à¤à¤•à¥à¤¸à¥‡à¤¸ à¤•à¤°à¥‡à¤‚</strong> â€” Telegram à¤²à¤¿à¤‚à¤• à¤¸à¥‡ à¤…à¤ªà¤¨à¥€ à¤•à¤¿à¤¤à¤¾à¤¬/à¤¬à¥ˆà¤š à¤¡à¤¾à¤‰à¤¨à¤²à¥‹à¤¡ à¤•à¤°à¥‡à¤‚à¥¤</li>
+        <li><strong>अपनी पसंद चुनें</strong> — जो किताब या बैच आपको चाहिए, उस पर टैप करें।</li>
+        <li><strong>कीमत देखें</strong> — आइटम पेज पर दी गई कीमत देख लें।</li>
+        <li><strong>Buy/Pay बटन दबाएं</strong> — भुगतान शुरू करने के लिए बटन पर टैप करें।</li>
+        <li><strong>Razorpay चेकआउट खुलेगा</strong> — सुरक्षित पेमेंट विंडो खुलेगी (थोड़ा समय लग सकता है)।</li>
+        <li><strong>पेमेंट तरीका चुनें</strong> — UPI (QR स्कैन/Google Pay/PhonePe), नेट बैंकिंग, या कार्ड।</li>
+        <li><strong>भुगतान पूरा करें</strong> — पेज बंद किए बिना कुछ सेकंड इंतज़ार करें।</li>
+        <li><strong>खरीदारी सफल</strong> — होम पेज पर सफलता का नोटिफिकेशन दिखेगा।</li>
+        <li><strong>"My Purchases" में जाएं</strong> — आपकी खरीदी हुई चीज़ वहां दिखेगी।</li>
+        <li><strong>कंटेंट एक्सेस करें</strong> — Telegram लिंक से अपनी किताब/बैच डाउनलोड करें।</li>
       </ol>
     </div>
 
@@ -1193,7 +1193,7 @@ function renderHome(){
     <div class="feed-section">
       <div class="feed-head">
         <h3>Popular batches</h3>
-        <a href="javascript:void(0)" onclick="goBatches()">See all â†’</a>
+        <a href="javascript:void(0)" onclick="goBatches()">See all →</a>
       </div>
       <div class="h-scroll">
         ${state.batches.map(it=>miniCard(it,'batches')).join('')}
@@ -1203,7 +1203,7 @@ function renderHome(){
     <div class="feed-section">
       <div class="feed-head books-head">
         <h3>New books</h3>
-        <a href="javascript:void(0)" onclick="goBooks()">See all â†’</a>
+        <a href="javascript:void(0)" onclick="goBooks()">See all →</a>
       </div>
       <div class="h-scroll">
         ${state.books.map(it=>miniCard(it,'books')).join('')}
@@ -1219,7 +1219,7 @@ function miniCard(it, kind){
       ${posterGallery(it, true, kind)}
       <div class="mini-body">
         <div class="mini-title">${escapeHtml(it.title)}</div>
-        <div class="mini-price">${owned ? 'Open' : 'â‚¹'+it.price}</div>
+        <div class="mini-price">${owned ? 'Open' : '₹'+it.price}</div>
       </div>
     </div>
   `;
@@ -1231,7 +1231,7 @@ function renderList(kind){
   const sub = kind==="batches" ? "Live course bundles" : "Study material & notes";
   app.innerHTML = `
     <div class="section-head">
-      <button class="back-btn" onclick="goHome()">â†</button>
+      <button class="back-btn" onclick="goHome()">←</button>
       <h2>${title}<span>${sub}</span></h2>
     </div>
     <div class="card-grid">
@@ -1251,11 +1251,11 @@ function renderCard(it, kind){
         <div class="item-sub">${escapeHtml(it.sub)}</div>
         <div class="item-foot">
           <div class="price-stub">
-            <span class="price-now">â‚¹${it.price}</span>
-            ${it.mrp ? `<span class="price-was">â‚¹${it.mrp}</span>` : ``}
+            <span class="price-now">₹${it.price}</span>
+            ${it.mrp ? `<span class="price-was">₹${it.mrp}</span>` : ``}
           </div>
           ${owned
-            ? `<button class="buy-btn owned" onclick="openOwned('${kind}','${it.id}')">Open âœ”</button>`
+            ? `<button class="buy-btn owned" onclick="openOwned('${kind}','${it.id}')">Open ✔</button>`
             : `<button class="buy-btn" onclick="openCheckout('${kind}','${it.id}')">Buy now</button>`
           }
         </div>
@@ -1312,28 +1312,28 @@ function openCheckout(kind,id){
   if(hasPurchase(id)){ openOwned(kind,id); return; }
   const body=document.getElementById('checkoutBody');
   body.innerHTML=`
-    <div class="pay-row"><span>${escapeHtml(it.title)}</span><span>â‚¹${it.price}</span></div>
-    <div class="pay-row total"><span>Total payable</span><span>â‚¹${it.price}</span></div>
+    <div class="pay-row"><span>${escapeHtml(it.title)}</span><span>₹${it.price}</span></div>
+    <div class="pay-row total"><span>Total payable</span><span>₹${it.price}</span></div>
     <div style="text-align:center;margin:16px 0 8px;">
-      <div class="success-icon" style="margin:0 auto 10px;">â‚¹</div>
+      <div class="success-icon" style="margin:0 auto 10px;">₹</div>
       <div style="font-weight:700;font-size:15px;">Secure Razorpay payment</div>
       <div class="note">Pay securely using UPI, cards, net banking and other Razorpay-supported methods.</div>
     </div>
-    <button class="pay-btn" id="payBtn" onclick="startPayment('${kind}','${id}')">Pay â‚¹${it.price} securely</button>
+    <button class="pay-btn" id="payBtn" onclick="startPayment('${kind}','${id}')">Pay ₹${it.price} securely</button>
     <div class="note">Your access is unlocked automatically after Razorpay confirms the successful payment. No UTR or manual approval is required.</div>`;
   document.getElementById('checkoutOverlay').classList.add('open');
 }
 async function startPayment(kind,id){
   if(!currentUser) return openAuth();
   const item=findItem(kind,id); if(!item) return showToast('Item not found');
-  const btn=document.getElementById('payBtn'); if(btn){btn.disabled=true;btn.textContent='Opening secure paymentâ€¦';}
+  const btn=document.getElementById('payBtn'); if(btn){btn.disabled=true;btn.textContent='Opening secure payment…';}
   try{
     const token=await firebase.auth().currentUser.getIdToken(true);
     const res=await fetch(`${API_BASE}/create-order`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({kind,id})});
-    let order; try{ order=await res.json(); }catch(_){ throw new Error('Payment server did not respond correctly â€” is this site deployed on Netlify with functions enabled?'); }
+    let order; try{ order=await res.json(); }catch(_){ throw new Error('Payment server did not respond correctly — is this site deployed on Netlify with functions enabled?'); }
     if(!res.ok){ const msg=order.error||'Could not create payment order'; if(/Razorpay Key ID\/Key Secret are not configured/i.test(msg)) throw new Error('Razorpay keys are not loaded in this Netlify deployment. After saving the Netlify variables, trigger a new Deploy/Publish and try again.'); throw new Error(msg); }
-    if(!order.orderId||!order.keyId) throw new Error('Razorpay order was not created â€” check Razorpay Key ID/Key Secret in Netlify environment variables.');
-    if(!window.Razorpay) throw new Error('Razorpay Checkout could not load â€” check your internet connection or browser blocker.');
+    if(!order.orderId||!order.keyId) throw new Error('Razorpay order was not created — check Razorpay Key ID/Key Secret in Netlify environment variables.');
+    if(!window.Razorpay) throw new Error('Razorpay Checkout could not load — check your internet connection or browser blocker.');
     const options={
       key:order.keyId,
       amount:order.amount,
@@ -1345,20 +1345,20 @@ async function startPayment(kind,id){
       notes:{kind,id},
       theme:{color:'#F0A93E'},
       handler:async function(response){ await handleRazorpaySuccess(response,kind,id); },
-      modal:{ondismiss:function(){ if(btn){btn.disabled=false;btn.textContent=`Pay â‚¹${item.price} securely`;} }}
+      modal:{ondismiss:function(){ if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;} }}
     };
     const rzp=new Razorpay(options);
     rzp.on('payment.failed',function(response){
       console.error('Razorpay payment failed',response);
-      showToast('âš ï¸ Payment failed. Please try again.');
-      if(btn){btn.disabled=false;btn.textContent=`Pay â‚¹${item.price} securely`;}
+      showToast('⚠️ Payment failed. Please try again.');
+      if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;}
     });
     rzp.open();
-  }catch(e){console.error(e);showToast('âš ï¸ '+(e.message||'Could not start payment'));if(btn){btn.disabled=false;btn.textContent=`Pay â‚¹${item.price} securely`;}}
+  }catch(e){console.error(e);showToast('⚠️ '+(e.message||'Could not start payment'));if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;}}
 }
 async function handleRazorpaySuccess(response,kind,id){
   try{
-    showToast('Verifying Razorpay paymentâ€¦');
+    showToast('Verifying Razorpay payment…');
     const token=await firebase.auth().currentUser.getIdToken(true);
     const res=await fetch(`${API_BASE}/verify-payment`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({
       orderId:response.razorpay_order_id,
@@ -1372,7 +1372,7 @@ async function handleRazorpaySuccess(response,kind,id){
     showSuccess(kind,id,true,false);
   }catch(e){
     console.error(e);
-    showToast('âš ï¸ Payment received but verification is pending. Please open My Purchases shortly.');
+    showToast('⚠️ Payment received but verification is pending. Please open My Purchases shortly.');
     await loadMyPurchases(currentUser.email);
   }
 }
@@ -1386,7 +1386,7 @@ function openOwned(kind,id){
 async function showSuccess(kind,id,afterPayment=false,pendingReview=false){
   const it=findItem(kind,id), body=document.getElementById('successBody'); if(!it) return;
   if(!currentUser || !hasPurchase(id,kind)) return showToast('Verified purchase required.');
-  body.innerHTML=`<div class="success-icon">âœ“</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is ready.</div><div class="note">Checking your secure access linkâ€¦</div>`;
+  body.innerHTML=`<div class="success-icon">✓</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is ready.</div><div class="note">Checking your secure access link…</div>`;
   document.getElementById('successOverlay').classList.add('open');
   try{
     const token=await firebase.auth().currentUser.getIdToken(true);
@@ -1401,10 +1401,10 @@ async function showSuccess(kind,id,afterPayment=false,pendingReview=false){
     }
     if(!data) throw (lastError||new Error('Access link unavailable'));
     const link=data.telegram||'';
-    body.innerHTML=`<div class="success-icon">âœ“</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is ready.</div>${link?`<a class="tg-btn" href="${escapeHtml(link)}" target="_blank" rel="noopener" onclick="markAccessUsed('${id}')">Click here to download / open your PDF book in Telegram</a>`:`<div class="note"><strong>Telegram link is not added for this item yet.</strong><br>Please contact support.</div>`}<div class="note"><strong>Note:</strong> This access link is provided only after verified payment. Please open it without refreshing or closing the page.</div>`;
+    body.innerHTML=`<div class="success-icon">✓</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is ready.</div>${link?`<a class="tg-btn" href="${escapeHtml(link)}" target="_blank" rel="noopener" onclick="markAccessUsed('${id}')">Click here to download / open your PDF book in Telegram</a>`:`<div class="note"><strong>Telegram link is not added for this item yet.</strong><br>Please contact support.</div>`}<div class="note"><strong>Note:</strong> This access link is provided only after verified payment. Please open it without refreshing or closing the page.</div>`;
   }catch(e){
     console.error(e);
-    body.innerHTML=`<div class="success-icon">âœ“</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is paid and recorded.</div><div class="note">Your secure access link is being prepared. Please close this popup and open My Purchases in a moment.</div>`;
+    body.innerHTML=`<div class="success-icon">✓</div><div class="success-title">Payment Successful!</div><div class="success-sub"><strong>${escapeHtml(it.title)}</strong> is paid and recorded.</div><div class="note">Your secure access link is being prepared. Please close this popup and open My Purchases in a moment.</div>`;
   }
 }
 async function markAccessUsed(id){
@@ -1428,7 +1428,7 @@ async function loadAdminData(){
   if(!isAdmin()) return;
   // Load private Telegram/PDF fields for every item at once (instead of one
   // request at a time, which was slow) and fall back to the last-known-good
-  // cached copy if a fetch fails â€” this is what stops a temporary network
+  // cached copy if a fetch fails — this is what stops a temporary network
   // hiccup from showing a blank Telegram field, which could otherwise get
   // saved over the real link and delete it.
   await Promise.all(['batches','books'].flatMap(kind =>
@@ -1451,22 +1451,22 @@ async function loadAdminData(){
           it.pdfUrl = cached.pdfUrl || '';
           it._telegramLoaded = true; // showing last-known-good value, safe to save
         } else {
-          it._telegramLoaded = false; // could not confirm the real value â€” block overwriting it
+          it._telegramLoaded = false; // could not confirm the real value — block overwriting it
         }
       }
     })
   ));
-  try{ state.messages = await loadAllMessages(); }catch(e){ showToast('âš ï¸ Could not load support messages'); }
+  try{ state.messages = await loadAllMessages(); }catch(e){ showToast('⚠️ Could not load support messages'); }
   try{
     const snap=await db.collection('purchases').get();
     state.allPurchases={};
     snap.forEach(d=>{state.allPurchases[d.id]=d.data().items||{};});
-  }catch(e){ showToast('âš ï¸ Could not load purchase records'); }
+  }catch(e){ showToast('⚠️ Could not load purchase records'); }
   try{
     const snap=await db.collection('purchaseRequests').where('status','==','pending').get();
     state.pendingRequests=[]; snap.forEach(d=>state.pendingRequests.push({id:d.id,...d.data()}));
     state.pendingRequests.sort((a,b)=>(b.at||0)-(a.at||0));
-  }catch(e){ state.pendingRequests=[]; showToast('âš ï¸ Could not load pending payments'); }
+  }catch(e){ state.pendingRequests=[]; showToast('⚠️ Could not load pending payments'); }
 }
 async function grantPendingRequest(reqId){
   const req=(state.pendingRequests||[]).find(r=>r.id===reqId);
@@ -1480,13 +1480,13 @@ async function grantPendingRequest(reqId){
     await db.collection('purchaseRequests').doc(reqId).set({status:'granted',grantedAt:Date.now()},{merge:true});
     showToast('Access granted');
     renderAdminEditor();
-  }catch(e){ console.error(e); showToast('âš ï¸ Could not grant access'); }
+  }catch(e){ console.error(e); showToast('⚠️ Could not grant access'); }
 }
 async function dismissPendingRequest(reqId){
   try{
     await db.collection('purchaseRequests').doc(reqId).set({status:'dismissed'},{merge:true});
     showToast('Dismissed'); renderAdminEditor();
-  }catch(e){ showToast('âš ï¸ Could not update request'); }
+  }catch(e){ showToast('⚠️ Could not update request'); }
 }
 function adminRow(it,i){
   const kind=adminTab;
@@ -1498,11 +1498,11 @@ function adminRow(it,i){
       <button class="admin-del" onclick="deleteItem('${kind}','${escapeHtml(it.id)}')">Delete</button>
     </div>
     <div class="field"><label>Title</label><input id="adm-title-${kind}-${safeId}" type="text" value="${escapeHtml(it.title||'')}" placeholder="Product title"></div>
-    <div class="field"><label>Tag / category</label><input id="adm-tag-${kind}-${safeId}" type="text" value="${escapeHtml(it.tag||'')}" placeholder="e.g. SSC Â· 2026"></div>
+    <div class="field"><label>Tag / category</label><input id="adm-tag-${kind}-${safeId}" type="text" value="${escapeHtml(it.tag||'')}" placeholder="e.g. SSC · 2026"></div>
     <div class="field"><label>Description</label><textarea id="adm-sub-${kind}-${safeId}" rows="3" placeholder="Short product description">${escapeHtml(it.sub||'')}</textarea></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <div class="field"><label>Sale price (â‚¹)</label><input id="adm-price-${kind}-${safeId}" type="number" min="0" step="1" value="${Number(it.price)||0}"></div>
-      <div class="field"><label>MRP (â‚¹)</label><input id="adm-mrp-${kind}-${safeId}" type="number" min="0" step="1" value="${Number(it.mrp)||0}"></div>
+      <div class="field"><label>Sale price (₹)</label><input id="adm-price-${kind}-${safeId}" type="number" min="0" step="1" value="${Number(it.price)||0}"></div>
+      <div class="field"><label>MRP (₹)</label><input id="adm-mrp-${kind}-${safeId}" type="number" min="0" step="1" value="${Number(it.mrp)||0}"></div>
     </div>
     <div class="field"><label>Telegram access link</label><input id="adm-telegram-${kind}-${safeId}" type="url" value="${escapeHtml(it.telegram||'')}" placeholder="https://t.me/..."></div>
     ${kind==='books'?`<div class="field"><label>PDF URL (optional)</label><input id="adm-pdf-${kind}-${safeId}" type="url" value="${escapeHtml(it.pdfUrl||'')}" placeholder="https://.../book.pdf"></div>`:''}
@@ -1510,7 +1510,7 @@ function adminRow(it,i){
     <div class="field"><label>Poster / cover images</label>
       <input type="file" accept="image/*" multiple onchange="handleAdminPosterUpload('${kind}','${escapeHtml(it.id)}',this)">
       <div class="note">You can select multiple images. The customer can swipe between them.</div>
-      ${imgs.length?`<div style="display:flex;gap:7px;overflow:auto;margin-top:8px;">${imgs.map((src,j)=>`<div style="position:relative;min-width:72px;width:72px;height:88px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#111;"><img src="${src}" style="width:100%;height:100%;object-fit:cover"><button type="button" onclick="removeAdminPoster('${kind}','${escapeHtml(it.id)}',${j})" style="position:absolute;top:2px;right:2px;border:0;border-radius:50%;width:22px;height:22px;background:#fff;color:#c33;font-weight:700;">Ã—</button></div>`).join('')}</div>`:''}
+      ${imgs.length?`<div style="display:flex;gap:7px;overflow:auto;margin-top:8px;">${imgs.map((src,j)=>`<div style="position:relative;min-width:72px;width:72px;height:88px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#111;"><img src="${src}" style="width:100%;height:100%;object-fit:cover"><button type="button" onclick="removeAdminPoster('${kind}','${escapeHtml(it.id)}',${j})" style="position:absolute;top:2px;right:2px;border:0;border-radius:50%;width:22px;height:22px;background:#fff;color:#c33;font-weight:700;">×</button></div>`).join('')}</div>`:''}
     </div>
   </div>`;
 }
@@ -1565,14 +1565,14 @@ async function handleAdminPosterUpload(kind,id,input){
   if(!it || !input.files?.length) return;
   const files=[...input.files];
   if(files.some(f=>f.size>8*1024*1024)){
-    showToast('âš ï¸ Each image must be 8 MB or smaller'); input.value=''; return;
+    showToast('⚠️ Each image must be 8 MB or smaller'); input.value=''; return;
   }
   try{
     const encoded=await Promise.all(files.map(file=>compressImageFile(file)));
     it.imgs=[...getPosterImages(it),...encoded];
     const ok=await savePoster(kind,id,it.imgs);
     if(ok){showToast('Poster images saved'); renderAdminEditor();}
-  }catch(e){console.error(e);showToast('âš ï¸ Could not read image');}
+  }catch(e){console.error(e);showToast('⚠️ Could not read image');}
   input.value='';
 }
 
@@ -1608,7 +1608,7 @@ async function renderAdminEditor(){
 function renderAdminSite(){
   const opts=(state.site.options&&state.site.options.length===5)?state.site.options:emptySiteOptions();
   return `
-    <div class="note" style="margin-bottom:10px;"><strong>How to buy â€” 5 options</strong><br>Customize all 5 slots below. Customers tap <strong>How to buy?</strong> on a product, choose an option, and then see its title plus the YouTube link. Leave a slot blank to hide it.</div>
+    <div class="note" style="margin-bottom:10px;"><strong>How to buy — 5 options</strong><br>Customize all 5 slots below. Customers tap <strong>How to buy?</strong> on a product, choose an option, and then see its title plus the YouTube link. Leave a slot blank to hide it.</div>
     ${opts.map((o,i)=>`
     <div class="admin-row">
       <div class="admin-row-head"><strong>Option ${i+1}</strong></div>
@@ -1622,7 +1622,7 @@ async function saveSiteFromAdmin(){
   for(let i=0;i<5;i++){
     const title=document.getElementById('siteTitleInput'+i).value.trim();
     const youtubeLink=document.getElementById('siteYoutubeInput'+i).value.trim();
-    if(youtubeLink && !youtubeEmbedUrl(youtubeLink)){ showToast(`âš ï¸ Option ${i+1}: that doesn't look like a valid YouTube link`); return; }
+    if(youtubeLink && !youtubeEmbedUrl(youtubeLink)){ showToast(`⚠️ Option ${i+1}: that doesn't look like a valid YouTube link`); return; }
     options.push({title, youtubeLink});
   }
   const ok=await saveSiteSettings(options);
@@ -1635,7 +1635,7 @@ async function saveSiteFromAdmin(){
 }
 function renderAdminMessages(){
   const msgs = (state.messages||[]).slice().sort((a,b)=>(b.at||0)-(a.at||0));
-  const rows = msgs.map(m=>`<div class="admin-row"><div class="admin-row-head"><strong>${escapeHtml(m.name||'Anonymous')}</strong>${m.email?` <span class="note" style="display:inline;">(${escapeHtml(m.email)})</span>`:''}</div><div class="note" style="text-align:left;white-space:pre-wrap;">${escapeHtml(m.message||'')}</div><div class="note" style="text-align:left;margin-top:6px;">${m.at?new Date(m.at).toLocaleString():'â€”'}</div></div>`).join('');
+  const rows = msgs.map(m=>`<div class="admin-row"><div class="admin-row-head"><strong>${escapeHtml(m.name||'Anonymous')}</strong>${m.email?` <span class="note" style="display:inline;">(${escapeHtml(m.email)})</span>`:''}</div><div class="note" style="text-align:left;white-space:pre-wrap;">${escapeHtml(m.message||'')}</div><div class="note" style="text-align:left;margin-top:6px;">${m.at?new Date(m.at).toLocaleString():'—'}</div></div>`).join('');
   return `<div class="note" style="text-align:left;margin-bottom:10px;"><strong>Support messages:</strong> every message sent from the "Message Support" box on the site appears here, newest first.</div>
   <div class="admin-list">${rows || '<div class="note">No messages yet.</div>'}</div>`;
 }
@@ -1643,7 +1643,7 @@ function renderAdminPurchases(){
   const pending=state.pendingRequests||[];
   const pendingRows=pending.map(r=>{
     const it=findItem(r.kind,r.itemId);
-    return `<div class="admin-row"><div class="admin-row-head"><strong>${escapeHtml(r.email)}</strong></div><div class="note" style="text-align:left;">${it?escapeHtml(it.title):r.itemId} (${r.kind==='batches'?'Batch':'Book'}) â€” â‚¹${(r.amount/100).toFixed(0)}<br>UTR / Reference: ${escapeHtml(r.paymentId||'â€”')}<br>Requested: ${r.at?new Date(r.at).toLocaleString():'â€”'}</div><div style="display:flex;gap:8px;margin-top:8px;"><button class="pay-btn" style="flex:1;" onclick="grantPendingRequest('${r.id}')">âœ“ Grant access</button><button class="tab-btn" style="flex:1;" onclick="dismissPendingRequest('${r.id}')">Dismiss</button></div></div>`;
+    return `<div class="admin-row"><div class="admin-row-head"><strong>${escapeHtml(r.email)}</strong></div><div class="note" style="text-align:left;">${it?escapeHtml(it.title):r.itemId} (${r.kind==='batches'?'Batch':'Book'}) — ₹${(r.amount/100).toFixed(0)}<br>UTR / Reference: ${escapeHtml(r.paymentId||'—')}<br>Requested: ${r.at?new Date(r.at).toLocaleString():'—'}</div><div style="display:flex;gap:8px;margin-top:8px;"><button class="pay-btn" style="flex:1;" onclick="grantPendingRequest('${r.id}')">✓ Grant access</button><button class="tab-btn" style="flex:1;" onclick="dismissPendingRequest('${r.id}')">Dismiss</button></div></div>`;
   }).join('');
   const rows=[];
   for(const email in state.allPurchases){
@@ -1658,19 +1658,19 @@ function renderAdminPurchases(){
   <div class="admin-list">${rows.length?rows.join(''):'<div class="note">No purchases yet.</div>'}</div>`;
 }
 async function saveAdminItem(kind,id){
-  if(!isAdmin()) return showToast('âš ï¸ Admin account required');
+  if(!isAdmin()) return showToast('⚠️ Admin account required');
   const it=findItem(kind,id);
-  if(!it) return showToast('âš ï¸ Item not found');
+  if(!it) return showToast('⚠️ Item not found');
   const telegram=readAdminField(kind,id,'telegram');
   const pdfUrl=kind==='books' ? readAdminField(kind,id,'pdf') : '';
   if(telegram && !/^https?:\/\/t\.me\//i.test(telegram)){
-    return showToast('âš ï¸ Telegram link should start with https://t.me/');
+    return showToast('⚠️ Telegram link should start with https://t.me/');
   }
   // Safety check: if this item's real Telegram/PDF value never successfully
-  // loaded (e.g. a network hiccup), refuse to save a blank field over it â€”
+  // loaded (e.g. a network hiccup), refuse to save a blank field over it —
   // that would silently delete the link every buyer of this item needs.
   if(!telegram && !pdfUrl && it._telegramLoaded===false){
-    return showToast('âš ï¸ Could not confirm the current Telegram link â€” please close and reopen this item before saving, so nothing gets deleted by mistake.');
+    return showToast('⚠️ Could not confirm the current Telegram link — please close and reopen this item before saving, so nothing gets deleted by mistake.');
   }
   const title=readAdminField(kind,id,'title');
   const tag=readAdminField(kind,id,'tag');
@@ -1693,7 +1693,7 @@ async function saveAdminItem(kind,id){
     if(!res.ok) throw new Error(data.error||`Server save failed (${res.status})`);
   }catch(e){
     console.error(e);
-    showToast('âš ï¸ Telegram save failed â€” '+(e.message||'please try again'));
+    showToast('⚠️ Telegram save failed — '+(e.message||'please try again'));
     return false;
   }
 
@@ -1701,7 +1701,7 @@ async function saveAdminItem(kind,id){
   try{
     const verified=await fsGetDoc('privateCatalog',`${kind}_${id}`);
     if(!verified || (verified.telegram||'')!==telegram || (verified.pdfUrl||'')!==pdfUrl){
-      showToast('âš ï¸ Save was sent but could not be verified yet');
+      showToast('⚠️ Save was sent but could not be verified yet');
       return false;
     }
   }catch(e){
@@ -1709,12 +1709,12 @@ async function saveAdminItem(kind,id){
     // because a client-side Firestore read is temporarily unavailable.
   }
   await idbSet(`catalog:${kind}:list`,kind==='batches'?stripImages(state.batches):stripImages(state.books));
-  showToast('âœ“ Telegram link & details saved');
+  showToast('✓ Telegram link & details saved');
   return true;
 }
 
 async function saveAdmin(){
-  if(!isAdmin()) return showToast('âš ï¸ Admin account required');
+  if(!isAdmin()) return showToast('⚠️ Admin account required');
   if(!['batches','books'].includes(adminTab)) return;
   const kind=adminTab;
   for(const it of state[kind]){
@@ -1774,7 +1774,7 @@ async function handleRazorpayReturn(){
     try{
       if(user){
         // Show the account as logged in immediately using data Firebase Auth
-        // already has, instead of waiting on a Firestore read first â€” the
+        // already has, instead of waiting on a Firestore read first — the
         // profile fetch below only upgrades the display name once it's back.
         currentUser={uid:user.uid,email:user.email,name:user.displayName||user.email.split('@')[0],mobile:''};
         refreshAccountButton();
@@ -1806,7 +1806,7 @@ async function handleRazorpayReturn(){
     console.error('Firebase Auth listener error:',err);
     authReady=true;
     refreshAccountButton();
-    showToast('âš ï¸ Login service could not initialize');
+    showToast('⚠️ Login service could not initialize');
   });
 })();
 </script>
