@@ -7,13 +7,13 @@
 <meta name="description" content="All Competition Breaker offers affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams. Trusted study material at student-friendly prices.">
 <meta name="keywords" content="SSC batch, competitive exam books, SSC study material, railway exam batch, defence exam preparation, SSC PYQ books, online coaching batch, cheap exam batches, All Competition Breaker">
 <meta name="robots" content="index, follow">
-<meta name="acb-build" content="razorpay-telegram-save-nav-polish-v2">
+<meta name="acb-build" content="cashfree-telegram-save-nav-polish-v1">
 <meta name="google-site-verification" content="ZRe_F276WFM0UYGO6DpOhSPnH8a-t_jgIMPmWX03UbA" />
-<link rel="canonical" href="https://allcompitionbrakeer.netlify.app/">
+<link rel="canonical" href="https://allrounder-batch.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="All Competition Breaker | SSC, Railway, Defence & Competitive Exam Batches & Books">
 <meta property="og:description" content="Affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams.">
-<meta property="og:url" content="https://allcompitionbrakeer.netlify.app/">
+<meta property="og:url" content="https://allrounder-batch.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="All Competition Breaker | SSC, Railway, Defence & Competitive Exam Batches & Books">
 <meta name="twitter:description" content="Affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams.">
@@ -22,14 +22,14 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "All Competition Breaker",
-  "url": "https://allcompitionbrakeer.netlify.app/",
+  "url": "https://allrounder-batch.vercel.app/",
   "description": "Affordable video batches and PDF books for SSC, Railway, Defence, State PCS and other competitive exams."
 }
 </script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -1137,7 +1137,7 @@ function renderHowToBuy(){
         <li><strong>Choose what you want</strong> — Tap the Book or Batch you'd like to buy.</li>
         <li><strong>Check the price</strong> — The price is shown on the item page.</li>
         <li><strong>Click Buy/Pay</strong> — Tap the payment button to start your purchase.</li>
-        <li><strong>Razorpay checkout opens</strong> — A secure payment window opens (may take a moment to load).</li>
+        <li><strong>Cashfree checkout opens</strong> — A secure payment window opens (may take a moment to load).</li>
         <li><strong>Choose your payment method</strong> — UPI (scan QR or Google Pay/PhonePe), Net Banking, or Card.</li>
         <li><strong>Complete the payment</strong> — Wait a few seconds without closing the page for confirmation.</li>
         <li><strong>Purchase confirmed</strong> — You'll return to the home page with a success notification.</li>
@@ -1152,7 +1152,7 @@ function renderHowToBuy(){
         <li><strong>अपनी पसंद चुनें</strong> — जो किताब या बैच आपको चाहिए, उस पर टैप करें।</li>
         <li><strong>कीमत देखें</strong> — आइटम पेज पर दी गई कीमत देख लें।</li>
         <li><strong>Buy/Pay बटन दबाएं</strong> — भुगतान शुरू करने के लिए बटन पर टैप करें।</li>
-        <li><strong>Razorpay चेकआउट खुलेगा</strong> — सुरक्षित पेमेंट विंडो खुलेगी (थोड़ा समय लग सकता है)।</li>
+        <li><strong>Cashfree चेकआउट खुलेगा</strong> — सुरक्षित पेमेंट विंडो खुलेगी (थोड़ा समय लग सकता है)।</li>
         <li><strong>पेमेंट तरीका चुनें</strong> — UPI (QR स्कैन/Google Pay/PhonePe), नेट बैंकिंग, या कार्ड।</li>
         <li><strong>भुगतान पूरा करें</strong> — पेज बंद किए बिना कुछ सेकंड इंतज़ार करें।</li>
         <li><strong>खरीदारी सफल</strong> — होम पेज पर सफलता का नोटिफिकेशन दिखेगा।</li>
@@ -1304,7 +1304,7 @@ function updatePosterDots(galleryEl){
   dotsWrap.querySelectorAll('.poster-dot').forEach((dot,i)=> dot.classList.toggle('active', i===idx));
 }
 
-/* ============ Checkout flow (automatic Razorpay payment) ============ */
+/* ============ Checkout flow (automatic Cashfree payment) ============ */
 function findItem(kind,id){ return state[kind].find(x=>x.id===id); }
 function openCheckout(kind,id){
   if(!currentUser){ openAuth(); showToast('Please login or sign up before buying'); return; }
@@ -1316,12 +1316,21 @@ function openCheckout(kind,id){
     <div class="pay-row total"><span>Total payable</span><span>₹${it.price}</span></div>
     <div style="text-align:center;margin:16px 0 8px;">
       <div class="success-icon" style="margin:0 auto 10px;">₹</div>
-      <div style="font-weight:700;font-size:15px;">Secure Razorpay payment</div>
-      <div class="note">Pay securely using UPI, cards, net banking and other Razorpay-supported methods.</div>
+      <div style="font-weight:700;font-size:15px;">Secure Cashfree payment</div>
+      <div class="note">Pay securely using UPI, cards, net banking and other Cashfree-supported methods.</div>
     </div>
     <button class="pay-btn" id="payBtn" onclick="startPayment('${kind}','${id}')">Pay ₹${it.price} securely</button>
-    <div class="note">Your access is unlocked automatically after Razorpay confirms the successful payment. No UTR or manual approval is required.</div>`;
+    <div class="note">Your access is unlocked automatically after Cashfree confirms the successful payment. No UTR or manual approval is required.</div>`;
   document.getElementById('checkoutOverlay').classList.add('open');
+}
+let cashfreeInstance=null;
+function getCashfreeInstance(env){
+  const mode = env==='TEST' ? 'sandbox' : 'production';
+  if(!cashfreeInstance || cashfreeInstance.__mode!==mode){
+    cashfreeInstance = Cashfree({mode});
+    cashfreeInstance.__mode = mode;
+  }
+  return cashfreeInstance;
 }
 async function startPayment(kind,id){
   if(!currentUser) return openAuth();
@@ -1330,41 +1339,28 @@ async function startPayment(kind,id){
   try{
     const token=await firebase.auth().currentUser.getIdToken(true);
     const res=await fetch(`${API_BASE}/create-order`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({kind,id})});
-    let order; try{ order=await res.json(); }catch(_){ throw new Error('Payment server did not respond correctly — is this site deployed on Netlify with functions enabled?'); }
-    if(!res.ok){ const msg=order.error||'Could not create payment order'; if(/Razorpay Key ID\/Key Secret are not configured/i.test(msg)) throw new Error('Razorpay keys are not loaded in this Netlify deployment. After saving the Netlify variables, trigger a new Deploy/Publish and try again.'); throw new Error(msg); }
-    if(!order.orderId||!order.keyId) throw new Error('Razorpay order was not created — check Razorpay Key ID/Key Secret in Netlify environment variables.');
-    if(!window.Razorpay) throw new Error('Razorpay Checkout could not load — check your internet connection or browser blocker.');
-    const options={
-      key:order.keyId,
-      amount:order.amount,
-      currency:order.currency||'INR',
-      name:'All Competition Breaker',
-      description:order.description||order.name||'ACB purchase',
-      order_id:order.orderId,
-      prefill:{name:currentUser.name||'',email:currentUser.email||'',contact:currentUser.mobile||''},
-      notes:{kind,id},
-      theme:{color:'#F0A93E'},
-      handler:async function(response){ await handleRazorpaySuccess(response,kind,id); },
-      modal:{ondismiss:function(){ if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;} }}
-    };
-    const rzp=new Razorpay(options);
-    rzp.on('payment.failed',function(response){
-      console.error('Razorpay payment failed',response);
-      showToast('⚠️ Payment failed. Please try again.');
+    let order; try{ order=await res.json(); }catch(_){ throw new Error('Payment server did not respond correctly — is this site deployed on Vercel with functions enabled?'); }
+    if(!res.ok){ const msg=order.error||'Could not create payment order'; if(/Cashfree App ID\/Secret Key are not configured/i.test(msg)) throw new Error('Cashfree keys are not loaded in this Vercel deployment. After saving the Vercel variables, trigger a new Deployment and try again.'); throw new Error(msg); }
+    if(!order.orderId||!order.paymentSessionId) throw new Error('Cashfree order was not created — check Cashfree App ID/Secret Key in Vercel environment variables.');
+    if(typeof Cashfree==='undefined') throw new Error('Cashfree Checkout could not load — check your internet connection or browser blocker.');
+    const cashfree=getCashfreeInstance(order.env);
+    const result=await cashfree.checkout({paymentSessionId:order.paymentSessionId,redirectTarget:'_modal'});
+    if(result && result.error){
+      console.error('Cashfree payment failed or cancelled',result.error);
+      showToast('⚠️ Payment failed or was cancelled. Please try again.');
       if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;}
-    });
-    rzp.open();
+      return;
+    }
+    // Whatever the popup reports, always confirm the real status with our
+    // own server (which asks Cashfree directly) before unlocking access.
+    await handleCashfreeSuccess(order.orderId,kind,id);
   }catch(e){console.error(e);showToast('⚠️ '+(e.message||'Could not start payment'));if(btn){btn.disabled=false;btn.textContent=`Pay ₹${item.price} securely`;}}
 }
-async function handleRazorpaySuccess(response,kind,id){
+async function handleCashfreeSuccess(orderId,kind,id){
   try{
-    showToast('Verifying Razorpay payment…');
+    showToast('Verifying payment…');
     const token=await firebase.auth().currentUser.getIdToken(true);
-    const res=await fetch(`${API_BASE}/verify-payment`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({
-      orderId:response.razorpay_order_id,
-      paymentId:response.razorpay_payment_id,
-      signature:response.razorpay_signature
-    })});
+    const res=await fetch(`${API_BASE}/verify-payment`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({orderId})});
     const data=await res.json();
     if(!res.ok) throw new Error(data.error||'Payment verification failed');
     await loadMyPurchases(currentUser.email);
@@ -1652,7 +1648,7 @@ function renderAdminPurchases(){
       rows.push(`<div class="admin-row"><div class="admin-row-head"><strong>${escapeHtml(email)}</strong></div><div class="note" style="text-align:left;">${it?escapeHtml(it.title):id} (${p.kind==='batches'?'Batch':'Book'})<br>Payment: ${escapeHtml(p.paymentId||'verified')}<br>Status: ${escapeHtml(p.status||'paid')}</div></div>`);
     }
   }
-  return `<div class="note" style="text-align:left;margin-bottom:10px;"><strong>Automatic Razorpay payments:</strong> successful payments are verified by the server and access is granted automatically. No UTR or manual approval is required.</div>
+  return `<div class="note" style="text-align:left;margin-bottom:10px;"><strong>Automatic Cashfree payments:</strong> successful payments are verified by the server and access is granted automatically. No UTR or manual approval is required.</div>
   ${pendingRows ? `<h3 style="margin:16px 0 10px;">Legacy pending requests</h3><div class="admin-list">${pendingRows}</div>` : ''}
   <h3 style="margin:16px 0 10px;">Granted purchases</h3>
   <div class="admin-list">${rows.length?rows.join(''):'<div class="note">No purchases yet.</div>'}</div>`;
@@ -1680,7 +1676,7 @@ async function saveAdminItem(kind,id){
   it.title=title; it.tag=tag; it.sub=sub; it.price=price; it.mrp=mrp; it.telegram=telegram;
   if(kind==='books') it.pdfUrl=pdfUrl;
 
-  // Save the sensitive access link through the Netlify server using the
+  // Save the sensitive access link through the Vercel server using the
   // Firebase Admin SDK. This avoids client-side Firestore-rule failures and
   // makes the link persist reliably in privateCatalog for paid access.
   try{
@@ -1740,16 +1736,17 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'), 1800);
 }
 
-async function handleRazorpayReturn(){
-  // Standard Razorpay Checkout uses the handler callback above. This function
-  // also recovers a purchase if a user returns to the page after a transient
-  // browser/network interruption and the payment is already recorded.
+async function handleCashfreeReturn(){
+  // The Cashfree popup checkout resolves via the promise in startPayment
+  // above. This function recovers a purchase for the rarer case where a
+  // payment method (e.g. net banking) redirected the whole page back via
+  // the order's return_url instead of staying in the popup.
   const params=new URLSearchParams(location.search);
-  const orderId=params.get('razorpay_order_id'),paymentId=params.get('razorpay_payment_id'),signature=params.get('razorpay_signature');
-  if(!orderId||!paymentId||!signature||!currentUser) return;
+  const orderId=params.get('cf_order_id');
+  if(!orderId||!currentUser) return;
   try{
     const token=await firebase.auth().currentUser.getIdToken(true);
-    const res=await fetch(`${API_BASE}/verify-payment`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({orderId,paymentId,signature})});
+    const res=await fetch(`${API_BASE}/verify-payment`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({orderId})});
     if(!res.ok) return;
     await loadMyPurchases(currentUser.email);
     const saved=await db.collection('orders').doc(orderId).get();
@@ -1786,7 +1783,7 @@ async function handleRazorpayReturn(){
         await loadMyPurchases(user.email);
         refreshAccountButton();
         render();
-        await handleRazorpayReturn();
+        await handleCashfreeReturn();
       }else{
         currentUser=null;
         state.purchases={};
