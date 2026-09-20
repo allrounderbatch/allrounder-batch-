@@ -5,9 +5,9 @@ module.exports = async (req,res) => {
   return sendJson(res,200,{
     ok:true,
     firebaseServiceAccountConfigured:Boolean(process.env.FIREBASE_SERVICE_ACCOUNT_JSON),
-    razorpayKeyIdConfigured:Boolean(process.env.RAZORPAY_KEY_ID),
-    razorpayKeySecretConfigured:Boolean(process.env.RAZORPAY_KEY_SECRET),
-    razorpayWebhookSecretConfigured:Boolean(process.env.RAZORPAY_WEBHOOK_SECRET),
+    cashfreeAppIdConfigured:Boolean(process.env.CASHFREE_APP_ID),
+    cashfreeSecretKeyConfigured:Boolean(process.env.CASHFREE_SECRET_KEY),
+    cashfreeWebhookSecretConfigured:Boolean(process.env.CASHFREE_WEBHOOK_SECRET||process.env.CASHFREE_SECRET_KEY),
     adminEmailConfigured:Boolean(process.env.ADMIN_EMAIL)
   });
 };
